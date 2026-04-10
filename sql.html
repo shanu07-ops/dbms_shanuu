@@ -1,0 +1,2375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLQueries</title>
+    <link rel="stylesheet" href="sql.css">
+</head>
+<body>
+
+    <!-- <nav> -->
+        <!-- <a href="new3.html">Home</a> -->
+        <!-- <a href="sql.html" class="active">SQL Queries</a> -->
+        <!-- <a href="plsql.html">PL/SQL</a> -->
+    <!-- </nav> -->
+
+    <main class="list-container">
+
+            <div class="list-item">
+            <h3>DDL</h3>
+            <!-- <a href="#" class="btn-small">Open</a> -->
+            <pre>
+-- 1 Create a table called STUDENT with columns: SID (NUMBER) , SNAME (VARCHAR2(30)) , AGE (NUMBER) , COURSE (VARCHAR2(20))
+
+
+CREATE TABLE STUDENT (
+    SID NUMBER,
+    SNAME VARCHAR2(30),
+    AGE NUMBER,
+    COURSE VARCHAR2(20)
+);
+
+
+-- 2 Create a table SCOTT.EMP with columns: EID NUMBER , ENAME VARCHAR2(40) , SALARY NUMBER(8,2) , DEPTNO NUMBER
+
+
+CREATE TABLE SCOTT.EMP (
+    EID NUMBER,
+    ENAME VARCHAR2(40),
+    SALARY NUMBER(8,2),
+    DEPTNO NUMBER
+);
+
+
+-- 3 Create a table DEPARTMENT with columns: DEPTNO NUMBER , DNAME VARCHAR2(30) , LOCATION VARCHAR2(30)
+
+
+CREATE TABLE DEPARTMENT (
+    DEPTNO NUMBER,
+    DNAME VARCHAR2(30),
+    LOCATION VARCHAR2(30)
+);
+
+
+-- 4 Create a table BOOK with columns: BOOK_ID NUMBER , TITLE VARCHAR2(50) , AUTHOR VARCHAR2(40) , PRICE NUMBER
+
+
+CREATE TABLE BOOK (
+    BOOK_ID NUMBER,
+    TITLE VARCHAR2(50),
+    AUTHOR VARCHAR2(40),
+    PRICE NUMBER
+);
+
+
+-- 5 Create a table COURSE with columns: CID NUMBER , CNAME VARCHAR2(40) , DURATION NUMBER
+
+
+CREATE TABLE COURSE (
+    CID NUMBER,
+    CNAME VARCHAR2(40),
+    DURATION NUMBER
+);
+
+
+-- 6 Create a table PROJECT with columns: PID NUMBER , PNAME VARCHAR2(50) , START_DATE DATE , END_DATE DATE
+
+
+CREATE TABLE PROJECT (
+    PID NUMBER,
+    PNAME VARCHAR2(50),
+    START_DATE DATE,
+    END_DATE DATE
+);
+
+
+-- 7 Create a table CUSTOMER with columns: CID NUMBER , CNAME VARCHAR2(40) , CITY VARCHAR2(30) , PHONE NUMBER
+
+
+CREATE TABLE CUSTOMER (
+    CID NUMBER,
+    CNAME VARCHAR2(40),
+    CITY VARCHAR2(30),
+    PHONE NUMBER
+);
+
+
+-- 8 Create a table SALES with columns: SALE_ID NUMBER , PRODUCT_NAME VARCHAR2(50) , QUANTITY NUMBER , PRICE NUMBER
+
+
+CREATE TABLE SALES (
+    SALE_ID NUMBER,
+    PRODUCT_NAME VARCHAR2(50),
+    QUANTITY NUMBER,
+    PRICE NUMBER
+);
+
+
+-- 9 Create a table SCOTT.EMP from the existing SCOTT.EMP table (structure only)
+
+
+CREATE TABLE SCOTT.EMP AS SELECT * FROM SCOTT.EMP WHERE 1=0;
+
+-- 10 Create a table SCOTT.EMP from SCOTT.EMP including data
+
+CREATE TABLE SCOTT.EMP AS SELECT * FROM SCOTT.EMP;
+
+
+-- 11 Add a column EMAIL VARCHAR2(50) to the STUDENT table
+
+ALTER TABLE STUDENT ADD EMAIL VARCHAR2(50);
+
+
+-- 12 Add a column PHONE NUMBER to the SCOTT.EMP table
+
+ALTER TABLE SCOTT.EMP ADD PHONE NUMBER;
+
+
+-- 13 Modify the column SNAME in STUDENT table to VARCHAR2(50)
+
+
+ALTER TABLE STUDENT MODIFY SNAME VARCHAR2(50);
+
+
+-- 14 Modify the column SALARY in SCOTT.EMP table to NUMBER(10,2)
+
+
+ALTER TABLE SCOTT.EMP MODIFY SALARY NUMBER(10,2);
+
+
+-- 15 Add two columns CITY VARCHAR2(30) and PINCODE NUMBER to CUSTOMER table
+
+
+ALTER TABLE CUSTOMER ADD PINCODE NUMBER;
+
+
+-- 16 Rename the column SNAME to STUDENT_NAME in STUDENT table
+
+
+ALTER TABLE STUDENT RENAME COLUMN SNAME TO STUDENT_NAME;
+
+
+-- 17 Drop the column AGE from STUDENT table
+
+
+ALTER TABLE STUDENT DROP COLUMN AGE;
+
+
+-- 18 Set the column SALARY in SCOTT.EMP table to NOT NULL
+
+
+ALTER TABLE SCOTT.EMP MODIFY SALARY NUMBER(10,2) NOT NULL;
+
+
+-- 19 Increase the size of column TITLE in BOOK table to VARCHAR2(100)
+
+
+ALTER TABLE BOOK MODIFY TITLE VARCHAR2(100);
+
+
+-- 20 Add a column MANAGER_ID NUMBER to SCOTT.EMP table
+
+
+ALTER TABLE SCOTT.EMP ADD MANAGER_ID NUMBER;
+
+
+-- 21 Drop the table STUDENT
+
+
+DROP TABLE STUDENT;
+
+
+-- 22 Drop the table CUSTOMER from the database
+
+
+DROP TABLE CUSTOMER;
+
+
+-- 23 Drop the table PROJECT permanently
+
+
+DROP TABLE PROJECT PURGE;
+
+
+-- 24  Remove the table SALES
+
+
+DROP TABLE SALES;
+
+
+-- 25 Drop the table COURSE
+
+
+DROP TABLE COURSE;
+
+
+-- 26 Rename the table STUDENT to STUDENTS
+
+
+ALTER TABLE STUDENT RENAME TO STUDENTS;
+
+
+-- 27 Rename the table SCOTT.EMP to SCOTT.EMP
+
+
+ALTER TABLE SCOTT.EMP RENAME TO SCOTT.EMP;
+
+
+-- 28 Rename the table CUSTOMER to CLIENT
+
+
+ALTER TABLE CUSTOMER RENAME TO CLIENT;
+
+
+-- 29 Rename the table BOOK to BOOK_DETAILS
+
+
+ALTER TABLE BOOK RENAME TO BOOK_DETAILS;
+
+
+-- 30 Rename the table PROJECT to PROJECT_INFO
+
+
+ALTER TABLE PROJECT RENAME TO PROJECT_INFO;
+
+
+-- 31 Remove all records from the STUDENT table
+
+
+DELETE FROM STUDENT;
+
+
+-- 32 Delete all rows from SCOTT.EMP table using TRUNCATE
+
+
+TRUNCATE TABLE SCOTT.EMP;
+
+
+-- 33 SCOTT.EMP the CUSTOMER table quickly
+
+
+TRUNCATE TABLE CUSTOMER;
+
+
+-- 34 Remove all data from SALES table but keep structure
+
+
+TRUNCATE TABLE SALES;
+
+
+-- 35 Clear the PROJECT table
+
+
+TRUNCATE TABLE PROJECT;
+
+
+-- 36 Create a table TRAINING with columns TID , TNAME , DURATION
+
+
+CREATE TABLE TRAINING (
+    TID NUMBER,
+    TNAME VARCHAR2(40),
+    DURATION NUMBER
+);
+
+
+-- 37 Add column TRAINER_NAME VARCHAR2(40) to TRAINING
+
+
+ALTER TABLE TRAINING ADD TRAINER_NAME VARCHAR2(40);
+
+
+-- 38 Modify TNAME column size to VARCHAR2(60)
+
+
+ALTER TABLE TRAINING MODIFY TNAME VARCHAR2(60);
+
+
+-- 39 Rename the TRAINING table to TRAINING_PROGRAM
+
+
+ALTER TABLE TRAINING RENAME TO TRAINING_PROGRAM;
+
+
+-- 40 Truncate the TRAINING_PROGRAM table
+
+
+TRUNCATE TABLE TRAINING_PROGRAM;
+
+
+-- 41 Drop the TRAINING_PROGRAM table
+
+
+DROP TABLE TRAINING_PROGRAM;
+
+
+-- 42 Create a table SCOTT.EMP with the following columns
+
+SCOTT.EMP NUMBER , PROJECT_ID NUMBER , START_DATE DATE , END_DATE DATE , ROLE VARCHAR2(30)
+
+Later modify the table to increase the size of ROLE to VARCHAR2(50) and add a column STATUS VARCHAR2(20)
+
+
+
+CREATE TABLE SCOTT.EMP (
+    SCOTT.EMP NUMBER,
+    PROJECT_ID NUMBER,
+    START_DATE DATE,
+    END_DATE DATE,
+    ROLE VARCHAR2(30)
+);
+
+
+ALTER TABLE SCOTT.EMP MODIFY ROLE VARCHAR2(50);
+ALTER TABLE SCOTT.EMP ADD STATUS VARCHAR2(20);
+
+
+-- 43 Create a table PRODUCT with columns
+
+PID NUMBER , PNAME VARCHAR2(50) , PRICE NUMBER , CATEGORY VARCHAR2(30)
+
+Then rename column PNAME to PRODUCT_NAME and change PRICE datatype to NUMBER(10,2)
+
+
+
+CREATE TABLE PRODUCT (
+    PID NUMBER,
+    PNAME VARCHAR2(50),
+    PRICE NUMBER,
+    CATEGORY VARCHAR2(30)
+);
+
+
+ALTER TABLE PRODUCT RENAME COLUMN PNAME TO PRODUCT_NAME;
+ALTER TABLE PRODUCT MODIFY PRICE NUMBER(10,2);
+
+
+-- 44 Create a table ORDERS with columns
+
+ORDER_ID NUMBER , CUSTOMER_ID NUMBER , ORDER_DATE DATE , TOTAL_AMOUNT NUMBER
+
+After creation:
+
+* Add column STATUS VARCHAR2(20)
+
+* Drop column TOTAL_AMOUNT
+
+* Add column TOTAL_AMOUNT NUMBER(10,2) again
+
+CREATE TABLE ORDERS (
+    ORDER_ID NUMBER,
+    CUSTOMER_ID NUMBER,
+    ORDER_DATE DATE,
+    TOTAL_AMOUNT NUMBER
+);
+
+
+ALTER TABLE ORDERS ADD STATUS VARCHAR2(20);
+ALTER TABLE ORDERS DROP COLUMN TOTAL_AMOUNT;
+ALTER TABLE ORDERS ADD TOTAL_AMOUNT NUMBER(10,2);
+
+
+-- 45 Create a table SCOTT.EMP from the SCOTT.EMP table containing only SCOTT.EMP with salary greater than 2000
+
+Then:
+
+* Rename the table to SCOTT.EMP
+
+* Truncate the table
+
+* Drop the table
+
+
+Start Solving
+
+CREATE TABLE SCOTT.EMP AS 
+SELECT * FROM SCOTT.EMP WHERE SALARY > 2000;
+
+
+ALTER TABLE SCOTT.EMP RENAME TO SCOTT.EMP;
+TRUNCATE TABLE SCOTT.EMP;
+DROP TABLE SCOTT.EMP;
+
+
+-- 46  Create a table STUDENT_RECORD with columns
+
+SID NUMBER , SNAME VARCHAR2(40) , COURSE VARCHAR2(30) , MARKS NUMBER
+
+Then perform the following:
+
+* Add column GRADE CHAR(1)
+
+* Modify MARKS datatype to NUMBER(5,2)
+
+* Rename column COURSE to COURSE_NAME
+
+
+
+CREATE TABLE STUDENT_RECORD (
+    SID NUMBER,
+    SNAME VARCHAR2(40),
+    COURSE VARCHAR2(30),
+    MARKS NUMBER
+);
+
+
+ALTER TABLE STUDENT_RECORD ADD GRADE CHAR(1);
+ALTER TABLE STUDENT_RECORD MODIFY MARKS NUMBER(5,2);
+ALTER TABLE STUDENT_RECORD RENAME COLUMN COURSE TO COURSE_NAME;
+
+
+-- 47 Create a table SCOTT.EMP using the structure of the SCOTT.EMP table but without copying data
+
+Then:
+
+* Add column ARCHIVE_DATE DATE
+
+* Rename the table to SCOTT.EMP
+
+
+CREATE TABLE SCOTT.EMP AS SELECT * FROM SCOTT.EMP WHERE 1=0;
+
+
+ALTER TABLE SCOTT.EMP ADD ARCHIVE_DATE DATE;
+ALTER TABLE SCOTT.EMP RENAME TO SCOTT.EMP;
+
+
+-- 48 Create a table DEPT_BACKUP from SCOTT.DEPT table including all rows
+
+Then:
+
+* Drop column LOC
+
+* Add column LOCATION VARCHAR2(40) 
+
+CREATE TABLE DEPT_BACKUP AS SELECT * FROM SCOTT.DEPT;
+
+
+ALTER TABLE DEPT_BACKUP DROP COLUMN LOC;
+ALTER TABLE DEPT_BACKUP ADD LOCATION VARCHAR2(40);
+
+
+-- 49 Create a table SALES_DATA with columns
+
+SALE_ID NUMBER , PRODUCT_ID NUMBER , SALE_DATE DATE , AMOUNT NUMBER
+
+Then perform:
+
+* Add column REGION VARCHAR2(30)
+
+* Modify AMOUNT to NUMBER(12,2)
+
+* Rename the table to REGIONAL_SALES_DATA
+
+
+CREATE TABLE SALES_DATA (
+    SALE_ID NUMBER,
+    PRODUCT_ID NUMBER,
+    SALE_DATE DATE,
+    AMOUNT NUMBER
+);
+
+
+ALTER TABLE SALES_DATA ADD REGION VARCHAR2(30);
+ALTER TABLE SALES_DATA MODIFY AMOUNT NUMBER(12,2);
+ALTER TABLE SALES_DATA RENAME TO REGIONAL_SALES_DATA;
+
+
+-- 50 Create a table LOG_TABLE with columns
+
+LOG_ID NUMBER , USER_NAME VARCHAR2(30) , ACTION VARCHAR2(50) , LOG_DATE DATE
+
+Then:
+
+* Truncate the table
+
+* Rename it to SYSTEM_LOG
+
+* Drop it permanently
+
+
+
+CREATE TABLE LOG_TABLE (
+    LOG_ID NUMBER,
+    USER_NAME VARCHAR2(30),
+    ACTION VARCHAR2(50),
+    LOG_DATE DATE
+);
+
+
+TRUNCATE TABLE LOG_TABLE;
+ALTER TABLE LOG_TABLE RENAME TO SYSTEM_LOG;
+DROP TABLE SYSTEM_LOG;
+            </pre>
+        </div>
+
+
+
+
+<!--         <div class="list-item">
+            <h3>DML</h3>
+            <!-- <a href="#" class="btn-small">Open</a> -->
+<!--              <pre> --> 
+
+<div class="list-item">
+    <h3>DML (Data Manipulation Language) - Insert, Update & Delete</h3>
+    <pre>
+<span class="comment-q">-- 1. Insert a record into STUDENT table with values: SID = 101, SNAME = 'RAHUL', AGE = 20, COURSE = 'MCA'.</span>
+INSERT INTO STUDENT (SID, SNAME, AGE, COURSE)
+VALUES (101, 'RAHUL', 20, 'MCA');
+
+<span class="comment-q">-- 2. Insert a record into SCOTT.EMP table with EID = 201, ENAME = 'ANITA', SALARY = 45000, DEPTNO = 10.</span>
+INSERT INTO SCOTT.EMP (EID, ENAME, SALARY, DEPTNO)
+VALUES (201, 'ANITA', 45000, 10);
+
+<span class="comment-q">-- 3. Insert a new department into SCOTT.DEPT table; DEPTNO = 50, DNAME = 'TRAINING', LOC = 'DELHI'.</span>
+INSERT INTO SCOTT.DEPT (DEPTNO, DNAME, LOC)
+VALUES (50, 'TRAINING', 'DELHI');
+
+<span class="comment-q">-- 4. Insert a record into BOOK table with only BOOK_ID, TITLE, and PRICE.</span>
+INSERT INTO BOOK (BOOK_ID, TITLE, PRICE)
+VALUES (1, 'SQL BASICS', 500);
+
+<span class="comment-q">-- 5. Insert multiple rows into COURSE table.</span>
+INSERT ALL
+  INTO COURSE VALUES (1, 'MCA', 3)
+  INTO COURSE VALUES (2, 'BCA', 3)
+  INTO COURSE VALUES (3, 'MBA', 2)
+SELECT * FROM DUAL;
+
+<span class="comment-q">-- 6. Insert data into SCOTT.EMP table from the SCOTT.EMP table.</span>
+INSERT INTO SCOTT.EMP
+SELECT * FROM SCOTT.EMP;
+
+<span class="comment-q">-- 7. Insert SCOTT.EMP from SCOTT.EMP whose salary is greater than 3000 into SCOTT.EMP.</span>
+INSERT INTO SCOTT.EMP
+SELECT * FROM SCOTT.EMP WHERE SAL > 3000;
+
+<span class="comment-q">-- 8. Insert SCOTT.EMP hired after 1981 into SCOTT.EMP.</span>
+INSERT INTO SCOTT.EMP
+SELECT * FROM SCOTT.EMP WHERE HIREDATE > '31-DEC-81';
+
+<span class="comment-q">-- 9. Insert department numbers and names from SCOTT.DEPT into a table called DEPT_BACKUP.</span>
+INSERT INTO DEPT_BACKUP (DEPTNO, DNAME)
+SELECT DEPTNO, DNAME FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 10. Insert SCOTT.EMP names and salaries into a table SCOTT.EMP.</span>
+INSERT INTO SCOTT.EMP (ENAME, SAL)
+SELECT ENAME, SAL FROM SCOTT.EMP;
+
+<span class="comment-q">-- 11. Update the salary of SCOTT.EMP SMITH to 2000.</span>
+UPDATE SCOTT.EMP SET SAL = 2000 WHERE ENAME = 'SMITH';
+
+<span class="comment-q">-- 12. Increase salary of all SCOTT.EMP by 10%.</span>
+UPDATE SCOTT.EMP SET SAL = SAL * 1.10;
+
+<span class="comment-q">-- 13. Update the department number of SCOTT.EMP ALLEN to 20.</span>
+UPDATE SCOTT.EMP SET DEPTNO = 20 WHERE ENAME = 'ALLEN';
+
+<span class="comment-q">-- 14. Update commission of SALESMAN to 500.</span>
+UPDATE SCOTT.EMP SET COMM = 500 WHERE JOB = 'SALESMAN';
+
+<span class="comment-q">-- 15. Update job of SCOTT.EMP MILLER to MANAGER.</span>
+UPDATE SCOTT.EMP SET JOB = 'MANAGER' WHERE ENAME = 'MILLER';
+
+<span class="comment-q">-- 16. Increase salary of SCOTT.EMP in department 10 by 20%.</span>
+UPDATE SCOTT.EMP SET SAL = SAL * 1.20 WHERE DEPTNO = 10;
+
+<span class="comment-q">-- 17. Update salary of SCOTT.EMP whose job is CLERK to 1500.</span>
+UPDATE SCOTT.EMP SET SAL = 1500 WHERE JOB = 'CLERK';
+
+<span class="comment-q">-- 18. Update location of department 30 to MUMBAI.</span>
+UPDATE SCOTT.DEPT SET LOC = 'MUMBAI' WHERE DEPTNO = 30;
+
+<span class="comment-q">-- 19. Update commission of SCOTT.EMP who have NULL commission to 100.</span>
+UPDATE SCOTT.EMP SET COMM = 100 WHERE COMM IS NULL;
+
+<span class="comment-q">-- 20. Update salary of SCOTT.EMP who earn less than average salary.</span>
+UPDATE SCOTT.EMP
+SET SAL = SAL + 500
+WHERE SAL < (SELECT AVG(SAL) FROM SCOTT.EMP);
+
+<span class="comment-q">-- 21. Delete SCOTT.EMP SMITH from SCOTT.EMP table.</span>
+DELETE FROM SCOTT.EMP WHERE ENAME = 'SMITH';
+
+<span class="comment-q">-- 22. Delete all SCOTT.EMP working in department 30.</span>
+DELETE FROM SCOTT.EMP WHERE DEPTNO = 30;
+
+<span class="comment-q">-- 23. Delete SCOTT.EMP whose salary is less than 1000.</span>
+DELETE FROM SCOTT.EMP WHERE SAL < 1000;
+
+<span class="comment-q">-- 24. Delete SCOTT.EMP hired before 1981.</span>
+DELETE FROM SCOTT.EMP WHERE HIREDATE < '01-JAN-81';
+
+<span class="comment-q">-- 25. Delete SCOTT.EMP who do not receive commission.</span>
+DELETE FROM SCOTT.EMP WHERE COMM IS NULL;
+
+<span class="comment-q">-- 26. Delete departments located in CHICAGO.</span>
+DELETE FROM SCOTT.DEPT WHERE LOC = 'CHICAGO';
+
+<span class="comment-q">-- 27. Delete SCOTT.EMP whose job is CLERK.</span>
+DELETE FROM SCOTT.EMP WHERE JOB = 'CLERK';
+
+<span class="comment-q">-- 28. Delete SCOTT.EMP earning the minimum salary.</span>
+DELETE FROM SCOTT.EMP
+WHERE SAL = (SELECT MIN(SAL) FROM SCOTT.EMP);
+
+<span class="comment-q">-- 29. Delete SCOTT.EMP working in departments located in NEW YORK.</span>
+DELETE FROM SCOTT.EMP
+WHERE DEPTNO IN (
+    SELECT DEPTNO FROM SCOTT.DEPT WHERE LOC = 'NEW YORK'
+);
+
+<span class="comment-q">-- 30. Delete SCOTT.EMP whose manager number is NULL.</span>
+DELETE FROM SCOTT.EMP WHERE MGR IS NULL;
+    </pre>
+</div>
+
+ <!-- <div class="list-item">
+            <h3>DQL</h3>
+<pre> -->
+    <div class="list-item">
+    <h3>Data Query Language (DQL) - Select & Retrieval</h3>
+    <pre>
+<span class="comment-q">-- 1. Display all columns of the SCOTT.EMP table.</span>
+SELECT * FROM SCOTT.EMP;
+
+<span class="comment-q">-- 2. Display SCOTT.EMP, ENAME, and SAL of all SCOTT.EMP from the SCOTT.EMP table.</span>
+SELECT SCOTT.EMP, ENAME, SAL FROM SCOTT.EMP;
+
+<span class="comment-q">-- 3. Display unique job titles from the SCOTT.EMP table.</span>
+SELECT DISTINCT JOB FROM SCOTT.EMP;
+
+<span class="comment-q">-- 4. Display SCOTT.EMP names along with their department numbers from the SCOTT.EMP table.</span>
+SELECT ENAME, DEPTNO FROM SCOTT.EMP;
+
+<span class="comment-q">-- 5. Display all department details from the SCOTT.DEPT table.</span>
+SELECT * FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 6. Display distinct department numbers from the SCOTT.EMP table.</span>
+SELECT DISTINCT DEPTNO FROM SCOTT.EMP;
+
+<span class="comment-q">-- 7. Display SCOTT.EMP name and annual salary (SAL × 12) from the SCOTT.EMP table.</span>
+SELECT ENAME, SAL * 12 AS ANNUAL_SALARY FROM SCOTT.EMP;
+
+<span class="comment-q">-- 8. Display SCOTT.EMP name, salary, and commission from the SCOTT.EMP table.</span>
+SELECT ENAME, SAL, COMM FROM SCOTT.EMP;
+
+<span class="comment-q">-- 9. Display job and salary of all SCOTT.EMP from the SCOTT.EMP table.</span>
+SELECT JOB, SAL FROM SCOTT.EMP;
+
+<span class="comment-q">-- 10. Display SCOTT.EMP along with their manager numbers from the SCOTT.EMP table.</span>
+SELECT ENAME, MGR FROM SCOTT.EMP;
+    </pre>
+</div>
+<div class="list-item">
+    <h3>Where Clause, Ordering & Aliases</h3>
+    <pre>
+<span class="comment-q">-- 1. Display SCOTT.EMP whose salary is greater than 3000.</span>
+SELECT * FROM SCOTT.EMP WHERE SAL > 3000;
+
+<span class="comment-q">-- 2. Display SCOTT.EMP working in department 10.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO = 10;
+
+<span class="comment-q">-- 3. Display SCOTT.EMP whose job is 'CLERK'.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB = 'CLERK';
+
+<span class="comment-q">-- 4. Display SCOTT.EMP hired after 01-JAN-81.</span>
+SELECT * FROM SCOTT.EMP WHERE HIREDATE > '01-JAN-81';
+
+<span class="comment-q">-- 5. Display SCOTT.EMP whose salary is less than 1500.</span>
+SELECT * FROM SCOTT.EMP WHERE SAL < 1500;
+
+<span class="comment-q">-- 6. Display SCOTT.EMP whose salary is > 2000 and job is 'MANAGER'.</span>
+SELECT * FROM SCOTT.EMP WHERE SAL > 2000 AND JOB = 'MANAGER';
+
+<span class="comment-q">-- 7. Display SCOTT.EMP working in department 10 or 20.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO = 10 OR DEPTNO = 20;
+
+<span class="comment-q">-- 8. Display SCOTT.EMP whose job is 'SALESMAN' and salary > 1500.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB = 'SALESMAN' AND SAL > 1500;
+
+<span class="comment-q">-- 9. Display SCOTT.EMP who are either CLERK or ANALYST.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB IN ('CLERK','ANALYST');
+
+<span class="comment-q">-- 10. Display SCOTT.EMP hired before 1982 and working in department 30.</span>
+SELECT * FROM SCOTT.EMP WHERE HIREDATE < '01-JAN-82' AND DEPTNO = 30;
+
+<span class="comment-q">-- 11. Display SCOTT.EMP working in departments 10, 20, or 30.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO IN (10, 20, 30);
+
+<span class="comment-q">-- 12. Display SCOTT.EMP whose job is not MANAGER or CLERK.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB NOT IN ('MANAGER', 'CLERK');
+
+<span class="comment-q">-- 13. Display SCOTT.EMP whose department is not 10.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO <> 10;
+
+<span class="comment-q">-- 14. Display SCOTT.EMP whose salary is between 1000 and 3000.</span>
+SELECT * FROM SCOTT.EMP WHERE SAL BETWEEN 1000 AND 3000;
+
+<span class="comment-q">-- 15. Display SCOTT.EMP hired between 01-JAN-81 and 31-DEC-81.</span>
+SELECT * FROM SCOTT.EMP WHERE HIREDATE BETWEEN '01-JAN-81' AND '31-DEC-81';
+
+<span class="comment-q">-- 16. Display all SCOTT.EMP ordered by salary in ascending order.</span>
+SELECT * FROM SCOTT.EMP ORDER BY SAL ASC;
+
+<span class="comment-q">-- 17. Display all SCOTT.EMP ordered by salary in descending order.</span>
+SELECT * FROM SCOTT.EMP ORDER BY SAL DESC;
+
+<span class="comment-q">-- 18. Display SCOTT.EMP ordered by hire date.</span>
+SELECT * FROM SCOTT.EMP ORDER BY HIREDATE;
+
+<span class="comment-q">-- 19. Display SCOTT.EMP ordered by department number and salary.</span>
+SELECT * FROM SCOTT.EMP ORDER BY DEPTNO, SAL;
+
+<span class="comment-q">-- 20. Display SCOTT.EMP ordered by job (ascending) and salary (descending).</span>
+SELECT * FROM SCOTT.EMP ORDER BY JOB ASC, SAL DESC;
+
+<span class="comment-q">-- 21. Display SCOTT.EMP names ordered alphabetically.</span>
+SELECT ENAME FROM SCOTT.EMP ORDER BY ENAME;
+
+<span class="comment-q">-- 22. Display SCOTT.EMP of department 30 ordered by salary.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO = 30 ORDER BY SAL;
+
+<span class="comment-q">-- 23. Display SCOTT.EMP ordered by annual salary.</span>
+SELECT *, SAL*12 AS ANNUAL_SALARY FROM SCOTT.EMP ORDER BY ANNUAL_SALARY;
+
+<span class="comment-q">-- 24. Display SCOTT.EMP ordered by commission.</span>
+SELECT * FROM SCOTT.EMP ORDER BY COMM;
+
+<span class="comment-q">-- 25. Display SCOTT.EMP ordered by job and name.</span>
+SELECT * FROM SCOTT.EMP ORDER BY JOB, ENAME;
+
+<span class="comment-q">-- 26. Display SCOTT.EMP name as SCOTT.EMP.</span>
+SELECT ENAME AS SCOTT.EMP FROM SCOTT.EMP;
+
+<span class="comment-q">-- 27. Display salary as Monthly_Salary.</span>
+SELECT SAL AS Monthly_Salary FROM SCOTT.EMP;
+
+<span class="comment-q">-- 28. Display SCOTT.EMP name and job with aliases.</span>
+SELECT ENAME AS Name, JOB AS Designation FROM SCOTT.EMP;
+
+<span class="comment-q">-- 29. Display department number as Dept_No.</span>
+SELECT DEPTNO AS Dept_No FROM SCOTT.EMP;
+
+<span class="comment-q">-- 30. Display SCOTT.EMP name and salary with meaningful aliases.</span>
+SELECT ENAME AS SCOTT.EMP, SAL AS Salary FROM SCOTT.EMP;
+
+<span class="comment-q">-- 31. Display commission as Incentive.</span>
+SELECT COMM AS Incentive FROM SCOTT.EMP;
+
+<span class="comment-q">-- 32. Display SCOTT.EMP name, job, and salary with aliases, ordered by job.</span>
+SELECT ENAME AS Name, JOB AS Job, SAL AS Salary FROM SCOTT.EMP ORDER BY JOB;
+
+<span class="comment-q">-- 33. Display SCOTT.EMP of department 30 whose salary > 1500, ordered by salary.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO = 30 AND SAL > 1500 ORDER BY SAL;
+
+<span class="comment-q">-- 34. Display SCOTT.EMP whose commission is NOT NULL, ordered by commission.</span>
+SELECT * FROM SCOTT.EMP WHERE COMM IS NOT NULL ORDER BY COMM;
+
+<span class="comment-q">-- 35. Display SCOTT.EMP whose salary is between 1500 and 3000, ordered by salary.</span>
+SELECT * FROM SCOTT.EMP WHERE SAL BETWEEN 1500 AND 3000 ORDER BY SAL;
+
+<span class="comment-q">-- 36. Display SCOTT.EMP name and department, ordered by department and name.</span>
+SELECT ENAME, DEPTNO FROM SCOTT.EMP ORDER BY DEPTNO, ENAME;
+
+<span class="comment-q">-- 37. Display SCOTT.EMP whose name starts with 'S', ordered by salary.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE 'S%' ORDER BY SAL;
+
+<span class="comment-q">-- 38. Display SCOTT.EMP hired before 1982 with aliases, ordered by hire date.</span>
+SELECT ENAME AS Name, HIREDATE AS Joining_Date FROM SCOTT.EMP 
+WHERE HIREDATE < '01-JAN-82' ORDER BY HIREDATE;
+
+<span class="comment-q">-- 39. Display SCOTT.EMP name as Name and salary as Pay for department 10.</span>
+SELECT ENAME AS Name, SAL AS Pay FROM SCOTT.EMP WHERE DEPTNO = 10;
+
+<span class="comment-q">-- 40. Display SCOTT.EMP whose commission is NULL, ordered by salary descending.</span>
+SELECT * FROM SCOTT.EMP WHERE COMM IS NULL ORDER BY SAL DESC;
+
+<span class="comment-q">-- 41. Display SCOTT.EMP name and annual salary, ordered by annual salary.</span>
+SELECT ENAME, SAL*12 AS ANNUAL_SALARY FROM SCOTT.EMP ORDER BY ANNUAL_SALARY;
+
+<span class="comment-q">-- 42. Display SCOTT.EMP whose commission is NULL but job is SALESMAN.</span>
+SELECT * FROM SCOTT.EMP WHERE COMM IS NULL AND JOB = 'SALESMAN';
+
+<span class="comment-q">-- 43. Display SCOTT.EMP whose manager is NULL and salary > 4000.</span>
+SELECT * FROM SCOTT.EMP WHERE MGR IS NULL AND SAL > 4000;
+
+<span class="comment-q">-- 44. Display SCOTT.EMP who do not earn commission and work in department 20.</span>
+SELECT * FROM SCOTT.EMP WHERE COMM IS NULL AND DEPTNO = 20;
+
+<span class="comment-q">-- 45. Display SCOTT.EMP whose commission is NOT NULL and department is 30.</span>
+SELECT * FROM SCOTT.EMP WHERE COMM IS NOT NULL AND DEPTNO = 30;
+
+<span class="comment-q">-- 46. Display SCOTT.EMP whose commission is NULL or salary > 3000.</span>
+SELECT * FROM SCOTT.EMP WHERE COMM IS NULL OR SAL > 3000;
+
+<span class="comment-q">-- 47. Display SCOTT.EMP whose commission is NULL and salary > 2000.</span>
+SELECT * FROM SCOTT.EMP WHERE COMM IS NULL AND SAL > 2000;
+
+<span class="comment-q">-- 48. Display SCOTT.EMP whose manager is not NULL.</span>
+SELECT * FROM SCOTT.EMP WHERE MGR IS NOT NULL;
+
+<span class="comment-q">-- 49. Display SCOTT.EMP who do not have a manager.</span>
+SELECT * FROM SCOTT.EMP WHERE MGR IS NULL;
+
+<span class="comment-q">-- 50. Display SCOTT.EMP who are getting commission.</span>
+SELECT * FROM SCOTT.EMP WHERE COMM IS NOT NULL;
+
+<span class="comment-q">-- 51. Display SCOTT.EMP whose commission is NULL.</span>
+SELECT * FROM SCOTT.EMP WHERE COMM IS NULL;
+
+<span class="comment-q">-- 52. Display job and salary using aliases.</span>
+SELECT JOB AS Job_Title, SAL AS Salary FROM SCOTT.EMP;
+
+<span class="comment-q">-- 53. Display SCOTT.EMP name and department number with aliases.</span>
+SELECT ENAME AS SCOTT.EMP, DEPTNO AS Dept_No FROM SCOTT.EMP;
+
+<span class="comment-q">-- 54. Display hire date as Joining_Date.</span>
+SELECT HIREDATE AS Joining_Date FROM SCOTT.EMP;
+    </pre>
+</div>
+
+<div class="list-item">
+    <h3>Pattern Matching - LIKE Operator Queries</h3>
+    <pre>
+<span class="comment-q">-- 1. Display SCOTT.EMP whose name starts with A.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE 'A%';
+
+<span class="comment-q">-- 2. Display SCOTT.EMP whose name starts with S.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE 'S%';
+
+<span class="comment-q">-- 3. Display SCOTT.EMP whose name ends with N.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%N';
+
+<span class="comment-q">-- 4. Display SCOTT.EMP whose name ends with R.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%R';
+
+<span class="comment-q">-- 5. Display SCOTT.EMP whose name contains LL.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%LL%';
+
+<span class="comment-q">-- 6. Display SCOTT.EMP whose name contains AR.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%AR%';
+
+<span class="comment-q">-- 7. Display SCOTT.EMP whose job starts with M.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB LIKE 'M%';
+
+<span class="comment-q">-- 8. Display SCOTT.EMP whose job ends with AN.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB LIKE '%AN';
+
+<span class="comment-q">-- 9. Display SCOTT.EMP whose job contains CL.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB LIKE '%CL%';
+
+<span class="comment-q">-- 10. Display departments whose location starts with N.</span>
+SELECT * FROM SCOTT.DEPT WHERE LOC LIKE 'N%';
+
+<span class="comment-q">-- 11. Display SCOTT.EMP whose name has exactly 4 characters.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '____';
+
+<span class="comment-q">-- 12. Display SCOTT.EMP whose name has exactly 5 characters.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '_____';
+
+<span class="comment-q">-- 13. Display SCOTT.EMP whose name has A as the second character.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '_A%';
+
+<span class="comment-q">-- 14. Display SCOTT.EMP whose name has L as the third character.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '__L%';
+
+<span class="comment-q">-- 15. Display SCOTT.EMP whose job has exactly 6 characters.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB LIKE '______';
+
+<span class="comment-q">-- 16. Display SCOTT.EMP whose name starts with any letter but ends with N.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%N';
+
+<span class="comment-q">-- 17. Display SCOTT.EMP whose job starts with any one character and ends with ER.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB LIKE '_%ER';
+
+<span class="comment-q">-- 18. Display SCOTT.EMP whose name has A as the first and N as the last character.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE 'A%N';
+
+<span class="comment-q">-- 19. Display SCOTT.EMP whose name has exactly 2 characters before 'E'.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '__E%';
+
+<span class="comment-q">-- 20. Display SCOTT.EMP whose name has exactly 1 character after 'A'.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%A_';
+
+<span class="comment-q">-- 21. Display SCOTT.EMP whose name starts with A and ends with N.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE 'A%N';
+
+<span class="comment-q">-- 22. Display SCOTT.EMP whose name contains E anywhere.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%E%';
+
+<span class="comment-q">-- 23. Display SCOTT.EMP whose name does not contain A.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME NOT LIKE '%A%';
+
+<span class="comment-q">-- 24. Display SCOTT.EMP whose job contains MAN.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB LIKE '%MAN%';
+
+<span class="comment-q">-- 25. Display SCOTT.EMP whose job does not start with C.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB NOT LIKE 'C%';
+
+<span class="comment-q">-- 26. Display SCOTT.EMP whose name contains two L consecutively.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%LL%';
+
+<span class="comment-q">-- 27. Display SCOTT.EMP whose name starts with J and has S anywhere.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE 'J%S%';
+
+<span class="comment-q">-- 28. Display SCOTT.EMP whose job starts with S and ends with AN.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB LIKE 'S%AN';
+
+<span class="comment-q">-- 29. Display SCOTT.EMP whose name contains A as the second last character.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%A_';
+
+<span class="comment-q">-- 30. Display SCOTT.EMP whose name contains exactly one character between A and E.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%A_E%';
+
+<span class="comment-q">-- 31. Display SCOTT.EMP whose name starts with S and salary > 2000.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE 'S%' AND SAL > 2000;
+
+<span class="comment-q">-- 32. Display SCOTT.EMP whose job ends with MAN and department is 20.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB LIKE '%MAN' AND DEPTNO = 20;
+
+<span class="comment-q">-- 33. Display SCOTT.EMP whose name contains A and commission is NULL.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%A%' AND COMM IS NULL;
+
+<span class="comment-q">-- 34. Display SCOTT.EMP whose job starts with C and salary < 1500.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB LIKE 'C%' AND SAL < 1500;
+
+<span class="comment-q">-- 35. Display SCOTT.EMP whose name ends with S and hired after 1981.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%S' AND HIREDATE > '31-DEC-81';
+
+<span class="comment-q">-- 36. Display SCOTT.EMP whose name starts with M and department is not 10.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE 'M%' AND DEPTNO <> 10;
+
+<span class="comment-q">-- 37. Display SCOTT.EMP whose job contains ER and salary between 2000 and 3000.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB LIKE '%ER%' AND SAL BETWEEN 2000 AND 3000;
+
+<span class="comment-q">-- 38. Display SCOTT.EMP whose name starts with A or job starts with S.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE 'A%' OR JOB LIKE 'S%';
+
+<span class="comment-q">-- 39. Display SCOTT.EMP whose name contains I and manager is NOT NULL.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%I%' AND MGR IS NOT NULL;
+
+<span class="comment-q">-- 40. Display SCOTT.EMP whose name ends with N and commission is NOT NULL.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%N' AND COMM IS NOT NULL;
+
+<span class="comment-q">-- 41. Display SCOTT.EMP name as Name whose name starts with S, ordered alphabetically.</span>
+SELECT ENAME AS Name FROM SCOTT.EMP WHERE ENAME LIKE 'S%' ORDER BY ENAME;
+
+<span class="comment-q">-- 42. Display SCOTT.EMP name and salary as Pay whose name contains A, ordered by salary.</span>
+SELECT ENAME, SAL AS Pay FROM SCOTT.EMP WHERE ENAME LIKE '%A%' ORDER BY SAL;
+
+<span class="comment-q">-- 43. Display SCOTT.EMP whose job starts with M, ordered by job and salary.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB LIKE 'M%' ORDER BY JOB, SAL;
+
+<span class="comment-q">-- 44. Display SCOTT.EMP whose name ends with E, ordered by hire date.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%E' ORDER BY HIREDATE;
+
+<span class="comment-q">-- 45. Display SCOTT.EMP name and annual salary for SCOTT.EMP whose name starts with J.</span>
+SELECT ENAME, SAL*12 AS ANNUAL_SALARY FROM SCOTT.EMP WHERE ENAME LIKE 'J%';
+
+<span class="comment-q">-- 46. Display SCOTT.EMP whose name contains R, ordered by department number.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%R%' ORDER BY DEPTNO;
+
+<span class="comment-q">-- 47. Display SCOTT.EMP name as SCOTT.EMP whose job ends with AN.</span>
+SELECT ENAME AS SCOTT.EMP FROM SCOTT.EMP WHERE JOB LIKE '%AN';
+
+<span class="comment-q">-- 48. Display SCOTT.EMP whose name starts with K, ordered by salary descending.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE 'K%' ORDER BY SAL DESC;
+
+<span class="comment-q">-- 49. Display SCOTT.EMP whose name contains L, ordered by name and salary.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%L%' ORDER BY ENAME, SAL;
+
+<span class="comment-q">-- 50. Display SCOTT.EMP whose job starts with C, ordered by job.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB LIKE 'C%' ORDER BY JOB;
+
+<span class="comment-q">-- 51. Display SCOTT.EMP whose name has exactly 6 characters and ends with R.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '_____R';
+
+<span class="comment-q">-- 52. Display SCOTT.EMP whose name has A as the third character from start.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '__A%';
+
+<span class="comment-q">-- 53. Display SCOTT.EMP whose name has E as the second character from end.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%E_';
+
+<span class="comment-q">-- 54. Display SCOTT.EMP whose name contains at least two characters before 'A'.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '__%A%';
+
+<span class="comment-q">-- 55. Display SCOTT.EMP whose job contains exactly one 'A'.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB LIKE '%A%' AND LENGTH(JOB) - LENGTH(REPLACE(JOB, 'A', '')) = 1;
+
+<span class="comment-q">-- 56. Display SCOTT.EMP whose name does not start with a vowel.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME NOT LIKE 'A%' AND ENAME NOT LIKE 'E%' AND ENAME NOT LIKE 'I%' AND ENAME NOT LIKE 'O%' AND ENAME NOT LIKE 'U%';
+
+<span class="comment-q">-- 57. Display SCOTT.EMP whose job does not contain ER.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB NOT LIKE '%ER%';
+
+<span class="comment-q">-- 58. Display SCOTT.EMP whose name starts and ends with the same character.</span>
+SELECT * FROM SCOTT.EMP WHERE SUBSTR(ENAME, 1, 1) = SUBSTR(ENAME, -1, 1);
+
+<span class="comment-q">-- 59. Display SCOTT.EMP whose name contains A and E in any order.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '%A%' AND ENAME LIKE '%E%';
+
+<span class="comment-q">-- 60. Display SCOTT.EMP whose name contains A but not as the first character.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE '_%A%';
+    </pre>
+</div>
+ 
+<div class="list-item">
+    <h3>Aggregate Functions & Grouping Queries</h3>
+    <pre>
+<span class="comment-q">-- 1. Display the total number of SCOTT.EMP.</span>
+SELECT COUNT(*) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 2. Display the total salary of all SCOTT.EMP.</span>
+SELECT SUM(SAL) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 3. Display the average salary of all SCOTT.EMP.</span>
+SELECT AVG(SAL) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 4. Display the highest salary.</span>
+SELECT MAX(SAL) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 5. Display the lowest salary.</span>
+SELECT MIN(SAL) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 6. Display the total number of departments in SCOTT.EMP table.</span>
+SELECT COUNT(DISTINCT DEPTNO) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 7. Display the number of SCOTT.EMP who are managers.</span>
+SELECT COUNT(*) FROM SCOTT.EMP WHERE JOB = 'MANAGER';
+
+<span class="comment-q">-- 8. Display the total commission paid to SCOTT.EMP.</span>
+SELECT SUM(COMM) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 9. Display the average commission.</span>
+SELECT AVG(COMM) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 10. Display the number of SCOTT.EMP who are getting commission.</span>
+SELECT COUNT(COMM) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 11. Display department-wise total salary.</span>
+SELECT DEPTNO, SUM(SAL) FROM SCOTT.EMP GROUP BY DEPTNO;
+
+<span class="comment-q">-- 12. Display department-wise average salary.</span>
+SELECT DEPTNO, AVG(SAL) FROM SCOTT.EMP GROUP BY DEPTNO;
+
+<span class="comment-q">-- 13. Display department-wise number of SCOTT.EMP.</span>
+SELECT DEPTNO, COUNT(*) FROM SCOTT.EMP GROUP BY DEPTNO;
+
+<span class="comment-q">-- 14. Display job-wise number of SCOTT.EMP.</span>
+SELECT JOB, COUNT(*) FROM SCOTT.EMP GROUP BY JOB;
+
+<span class="comment-q">-- 15. Display job-wise total salary.</span>
+SELECT JOB, SUM(SAL) FROM SCOTT.EMP GROUP BY JOB;
+
+<span class="comment-q">-- 16. Display job-wise maximum salary.</span>
+SELECT JOB, MAX(SAL) FROM SCOTT.EMP GROUP BY JOB;
+
+<span class="comment-q">-- 17. Display job-wise minimum salary.</span>
+SELECT JOB, MIN(SAL) FROM SCOTT.EMP GROUP BY JOB;
+
+<span class="comment-q">-- 18. Display department-wise maximum salary.</span>
+SELECT DEPTNO, MAX(SAL) FROM SCOTT.EMP GROUP BY DEPTNO;
+
+<span class="comment-q">-- 19. Display department-wise minimum salary.</span>
+SELECT DEPTNO, MIN(SAL) FROM SCOTT.EMP GROUP BY DEPTNO;
+
+<span class="comment-q">-- 20. Display department-wise average commission.</span>
+SELECT DEPTNO, AVG(COMM) FROM SCOTT.EMP GROUP BY DEPTNO;
+
+<span class="comment-q">-- 21. Display department-wise job-wise number of SCOTT.EMP.</span>
+SELECT DEPTNO, JOB, COUNT(*) FROM SCOTT.EMP GROUP BY DEPTNO, JOB;
+
+<span class="comment-q">-- 22. Display department-wise job-wise total salary.</span>
+SELECT DEPTNO, JOB, SUM(SAL) FROM SCOTT.EMP GROUP BY DEPTNO, JOB;
+
+<span class="comment-q">-- 23. Display department-wise job-wise average salary.</span>
+SELECT DEPTNO, JOB, AVG(SAL) FROM SCOTT.EMP GROUP BY DEPTNO, JOB;
+
+<span class="comment-q">-- 24. Display job-wise department-wise maximum salary.</span>
+SELECT JOB, DEPTNO, MAX(SAL) FROM SCOTT.EMP GROUP BY JOB, DEPTNO;
+
+<span class="comment-q">-- 25. Display job-wise department-wise minimum salary.</span>
+SELECT JOB, DEPTNO, MIN(SAL) FROM SCOTT.EMP GROUP BY JOB, DEPTNO;
+
+<span class="comment-q">-- 26. Display department and job having highest total salary.</span>
+SELECT DEPTNO, JOB, SUM(SAL) 
+FROM SCOTT.EMP 
+GROUP BY DEPTNO, JOB 
+HAVING SUM(SAL) = (SELECT MAX(SUM(SAL)) FROM SCOTT.EMP GROUP BY DEPTNO, JOB);
+
+<span class="comment-q">-- 27. Display department where sum of salaries is maximum.</span>
+SELECT DEPTNO, SUM(SAL) 
+FROM SCOTT.EMP 
+GROUP BY DEPTNO 
+HAVING SUM(SAL) = (SELECT MAX(SUM(SAL)) FROM SCOTT.EMP GROUP BY DEPTNO);
+
+<span class="comment-q">-- 28. Display job having minimum average salary.</span>
+SELECT JOB, AVG(SAL) 
+FROM SCOTT.EMP 
+GROUP BY JOB 
+HAVING AVG(SAL) = (SELECT MIN(AVG(SAL)) FROM SCOTT.EMP GROUP BY JOB);
+
+<span class="comment-q">-- 29. Display jobs having average salary greater than department-wise average salary.</span>
+SELECT JOB FROM SCOTT.EMP E1 GROUP BY JOB 
+HAVING AVG(SAL) > (SELECT AVG(SAL) FROM SCOTT.EMP E2 WHERE E1.DEPTNO = E2.DEPTNO);
+
+<span class="comment-q">-- 30. Display department having highest number of SCOTT.EMP.</span>
+SELECT DEPTNO 
+FROM SCOTT.EMP 
+GROUP BY DEPTNO 
+HAVING COUNT(*) = (SELECT MAX(COUNT(*)) FROM SCOTT.EMP GROUP BY DEPTNO);
+
+<span class="comment-q">-- 31. Display jobs whose total salary is more than salary of all CLERKs combined.</span>
+SELECT JOB, SUM(SAL) FROM SCOTT.EMP GROUP BY JOB 
+HAVING SUM(SAL) > (SELECT SUM(SAL) FROM SCOTT.EMP WHERE JOB = 'CLERK');
+
+<span class="comment-q">-- 32. Display departments having same number of SCOTT.EMP.</span>
+SELECT COUNT(*), DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO 
+HAVING COUNT(*) IN (SELECT COUNT(*) FROM SCOTT.EMP GROUP BY DEPTNO GROUP BY COUNT(*) HAVING COUNT(*) > 1);
+
+<span class="comment-q">-- 33. Display jobs where max salary is equal to department 20 max salary.</span>
+SELECT JOB FROM SCOTT.EMP GROUP BY JOB 
+HAVING MAX(SAL) = (SELECT MAX(SAL) FROM SCOTT.EMP WHERE DEPTNO = 20);
+
+<span class="comment-q">-- 34. Display department having minimum total salary.</span>
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO 
+HAVING SUM(SAL) = (SELECT MIN(SUM(SAL)) FROM SCOTT.EMP GROUP BY DEPTNO);
+
+<span class="comment-q">-- 35. Display job having highest average salary.</span>
+SELECT JOB FROM SCOTT.EMP GROUP BY JOB 
+HAVING AVG(SAL) = (SELECT MAX(AVG(SAL)) FROM SCOTT.EMP GROUP BY JOB);
+
+<span class="comment-q">-- 36. Display department number and total salary where average salary is greater than overall average salary.</span>
+SELECT DEPTNO, SUM(SAL) FROM SCOTT.EMP GROUP BY DEPTNO 
+HAVING AVG(SAL) > (SELECT AVG(SAL) FROM SCOTT.EMP);
+
+<span class="comment-q">-- 37. Display job-wise count of SCOTT.EMP not getting commission.</span>
+SELECT JOB, COUNT(*) FROM SCOTT.EMP WHERE COMM IS NULL GROUP BY JOB;
+
+<span class="comment-q">-- 38. Display departments where no SCOTT.EMP gets commission.</span>
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING COUNT(COMM) = 0;
+
+<span class="comment-q">-- 39. Display departments where all SCOTT.EMP get commission.</span>
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING COUNT(*) = COUNT(COMM);
+
+<span class="comment-q">-- 40. Display job-wise average commission.</span>
+SELECT JOB, AVG(COMM) FROM SCOTT.EMP GROUP BY JOB;
+
+<span class="comment-q">-- 41. Display department-wise count of SCOTT.EMP where manager is NULL.</span>
+SELECT DEPTNO, COUNT(*) FROM SCOTT.EMP WHERE MGR IS NULL GROUP BY DEPTNO;
+
+<span class="comment-q">-- 42. Display number of SCOTT.EMP without commission.</span>
+SELECT COUNT(*) FROM SCOTT.EMP WHERE COMM IS NULL;
+
+<span class="comment-q">-- 43. Display total commission paid (ignore NULLs).</span>
+SELECT SUM(COMM) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 44. Display department-wise average commission excluding NULLs.</span>
+SELECT DEPTNO, AVG(COMM) FROM SCOTT.EMP GROUP BY DEPTNO;
+
+<span class="comment-q">-- 45. Display job-wise total commission.</span>
+SELECT JOB, SUM(COMM) FROM SCOTT.EMP GROUP BY JOB;
+
+<span class="comment-q">-- 46. Display department-wise count of SCOTT.EMP getting commission.</span>
+SELECT DEPTNO, COUNT(COMM) FROM SCOTT.EMP GROUP BY DEPTNO;
+
+<span class="comment-q">-- 47. Display jobs having more than one manager.</span>
+SELECT JOB FROM SCOTT.EMP GROUP BY JOB HAVING COUNT(DISTINCT MGR) > 1;
+
+<span class="comment-q">-- 48. Display departments having SCOTT.EMP with commission.</span>
+SELECT DISTINCT DEPTNO FROM SCOTT.EMP WHERE COMM IS NOT NULL;
+
+<span class="comment-q">-- 49. Display job-wise average salary where total salary > 5000.</span>
+SELECT JOB, AVG(SAL) FROM SCOTT.EMP GROUP BY JOB HAVING SUM(SAL) > 5000;
+
+<span class="comment-q">-- 50. Display department-wise total salary where SCOTT.EMP count > 4.</span>
+SELECT DEPTNO, SUM(SAL) FROM SCOTT.EMP GROUP BY DEPTNO HAVING COUNT(*) > 4;
+
+<span class="comment-q">-- 51. Display jobs whose minimum salary is less than 1000.</span>
+SELECT JOB FROM SCOTT.EMP GROUP BY JOB HAVING MIN(SAL) < 1000;
+
+<span class="comment-q">-- 52. Display departments having maximum salary greater than 4000.</span>
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING MAX(SAL) > 4000;
+
+<span class="comment-q">-- 53. Display jobs having more than 2 SCOTT.EMP.</span>
+SELECT JOB FROM SCOTT.EMP GROUP BY JOB HAVING COUNT(*) > 2;
+
+<span class="comment-q">-- 54. Display departments whose total salary is greater than 10000.</span>
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING SUM(SAL) > 10000;
+
+<span class="comment-q">-- 55. Display jobs having average salary greater than 2500.</span>
+SELECT JOB FROM SCOTT.EMP GROUP BY JOB HAVING AVG(SAL) > 2500;
+
+<span class="comment-q">-- 56. Display departments having more than 3 SCOTT.EMP.</span>
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING COUNT(*) > 3;
+
+<span class="comment-q">-- 57. Display department-wise SCOTT.EMP count where job is SALESMAN.
+-- Display job-wise total commission where commission is NOT NULL.</span>
+SELECT DEPTNO, COUNT(*) FROM SCOTT.EMP WHERE JOB = 'SALESMAN' GROUP BY DEPTNO;
+SELECT JOB, SUM(COMM) FROM SCOTT.EMP WHERE COMM IS NOT NULL GROUP BY JOB;
+
+<span class="comment-q">-- 58. Display job-wise max salary where salary > 1500.</span>
+SELECT JOB, MAX(SAL) FROM SCOTT.EMP WHERE SAL > 1500 GROUP BY JOB;
+
+<span class="comment-q">-- 59. Display department-wise total salary excluding department 30.</span>
+SELECT DEPTNO, SUM(SAL) FROM SCOTT.EMP WHERE DEPTNO <> 30 GROUP BY DEPTNO;
+
+<span class="comment-q">-- 60. Display job-wise average salary where department is 20.</span>
+SELECT JOB, AVG(SAL) FROM SCOTT.EMP WHERE DEPTNO = 20 GROUP BY JOB;
+
+<span class="comment-q">-- 61. Display department-wise number of SCOTT.EMP where commission is NOT NULL.</span>
+SELECT DEPTNO, COUNT(*) FROM SCOTT.EMP WHERE COMM IS NOT NULL GROUP BY DEPTNO;
+
+<span class="comment-q">-- 62. Display job-wise total salary for CLERK and MANAGER.</span>
+SELECT JOB, SUM(SAL) FROM SCOTT.EMP WHERE JOB IN ('CLERK','MANAGER') GROUP BY JOB;
+
+<span class="comment-q">-- 63. Display department-wise average salary for SCOTT.EMP hired after 1981.</span>
+SELECT DEPTNO, AVG(SAL) FROM SCOTT.EMP WHERE HIREDATE > '31-DEC-81' GROUP BY DEPTNO;
+
+<span class="comment-q">-- 64. Display job-wise SCOTT.EMP count where salary > 2000.</span>
+SELECT JOB, COUNT(*) FROM SCOTT.EMP WHERE SAL > 2000 GROUP BY JOB;
+
+<span class="comment-q">-- 65. Display department-wise total salary for department numbers greater than 10.</span>
+SELECT DEPTNO, SUM(SAL) FROM SCOTT.EMP WHERE DEPTNO > 10 GROUP BY DEPTNO;
+
+<span class="comment-q">-- 66. Display department and job having maximum number of SCOTT.EMP.</span>
+SELECT DEPTNO, JOB, COUNT(*) 
+FROM SCOTT.EMP 
+GROUP BY DEPTNO, JOB 
+HAVING COUNT(*) = (SELECT MAX(COUNT(*)) FROM SCOTT.EMP GROUP BY DEPTNO, JOB);
+
+<span class="comment-q">-- 67. Display department-wise job-wise SCOTT.EMP count.</span>
+SELECT DEPTNO, JOB, COUNT(*) FROM SCOTT.EMP GROUP BY DEPTNO, JOB;
+
+<span class="comment-q">-- 68. Display department-wise job-wise total commission.</span>
+SELECT DEPTNO, JOB, SUM(COMM) FROM SCOTT.EMP GROUP BY DEPTNO, JOB;
+
+<span class="comment-q">-- 69. Display department and job having lowest average salary.</span>
+SELECT DEPTNO, JOB, AVG(SAL) 
+FROM SCOTT.EMP 
+GROUP BY DEPTNO, JOB 
+HAVING AVG(SAL) = (SELECT MIN(AVG(SAL)) FROM SCOTT.EMP GROUP BY DEPTNO, JOB);
+    </pre>
+</div>
+
+<div class="list-item">
+    <h3> Subqueries </h3>
+    <pre>
+<span class="comment-q">-- 1. Display SCOTT.EMP whose salary is greater than JONES.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE SAL > (SELECT SAL FROM SCOTT.EMP WHERE ENAME = 'JONES');
+
+<span class="comment-q">-- 2. Display SCOTT.EMP earning the same salary as SCOTT.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE SAL = (SELECT SAL FROM SCOTT.EMP WHERE ENAME = 'SCOTT');
+
+<span class="comment-q">-- 3. Display SCOTT.EMP hired after ALLEN.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE HIREDATE > (SELECT HIREDATE FROM SCOTT.EMP WHERE ENAME = 'ALLEN');
+
+<span class="comment-q">-- 4. Display SCOTT.EMP working in the same department as BLAKE.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE DEPTNO = (SELECT DEPTNO FROM SCOTT.EMP WHERE ENAME = 'BLAKE');
+
+<span class="comment-q">-- 5. Display SCOTT.EMP having the same job as MILLER.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE JOB = (SELECT JOB FROM SCOTT.EMP WHERE ENAME = 'MILLER');
+
+<span class="comment-q">-- 6. Display SCOTT.EMP earning less than the average salary.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE SAL < (SELECT AVG(SAL) FROM SCOTT.EMP);
+
+<span class="comment-q">-- 7. Display SCOTT.EMP earning more than the maximum salary of CLERKs.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE SAL > (SELECT MAX(SAL) FROM SCOTT.EMP WHERE JOB = 'CLERK');
+
+<span class="comment-q">-- 8. Display SCOTT.EMP(s) with the minimum salary.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE SAL = (SELECT MIN(SAL) FROM SCOTT.EMP);
+
+<span class="comment-q">-- 9. Display SCOTT.EMP(s) with the maximum salary.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE SAL = (SELECT MAX(SAL) FROM SCOTT.EMP);
+
+<span class="comment-q">-- 10. Display SCOTT.EMP working in departments located in NEW YORK.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.DEPT WHERE LOC = 'NEW YORK');
+
+<span class="comment-q">-- 11. Display SCOTT.EMP whose salary matches any salary in department 30.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE SAL IN (SELECT SAL FROM SCOTT.EMP WHERE DEPTNO = 30);
+
+<span class="comment-q">-- 12. Display SCOTT.EMP earning more than all CLERKs.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE SAL > ALL (SELECT SAL FROM SCOTT.EMP WHERE JOB = 'CLERK');
+
+<span class="comment-q">-- 13. Display SCOTT.EMP earning less than any MANAGER.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE SAL < ANY (SELECT SAL FROM SCOTT.EMP WHERE JOB = 'MANAGER');
+
+<span class="comment-q">-- 14. Display SCOTT.EMP whose job appears in department 20.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE JOB IN (SELECT JOB FROM SCOTT.EMP WHERE DEPTNO = 20);
+
+<span class="comment-q">-- 15. Display SCOTT.EMP whose department has at least one SALESMAN.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.EMP WHERE JOB = 'SALESMAN');
+
+<span class="comment-q">-- 16. Display SCOTT.EMP earning the same salary as any CLERK.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE SAL IN (SELECT SAL FROM SCOTT.EMP WHERE JOB = 'CLERK');
+
+<span class="comment-q">-- 17. Display SCOTT.EMP who are not working in departments of SALESMAN.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE DEPTNO NOT IN (SELECT DEPTNO FROM SCOTT.EMP WHERE JOB = 'SALESMAN');
+
+<span class="comment-q">-- 18. Display SCOTT.EMP earning more than all SCOTT.EMP in department 10.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE SAL > ALL (SELECT SAL FROM SCOTT.EMP WHERE DEPTNO = 10);
+
+<span class="comment-q">-- 19. Display SCOTT.EMP whose department number is among departments with more than 3 SCOTT.EMP.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING COUNT(*) > 3);
+
+<span class="comment-q">-- 20. Display SCOTT.EMP whose salary is greater than salary of their manager.</span>
+SELECT * FROM SCOTT.EMP E 
+WHERE SAL > (SELECT SAL FROM SCOTT.EMP WHERE SCOTT.EMP = E.MGR);
+
+<span class="comment-q">-- 21. Display jobs where average salary is greater than overall average salary.</span>
+SELECT JOB FROM SCOTT.EMP GROUP BY JOB 
+HAVING AVG(SAL) > (SELECT AVG(SAL) FROM SCOTT.EMP);
+
+<span class="comment-q">-- 22. Display SCOTT.EMP earning more than the department average salary.</span>
+SELECT * FROM SCOTT.EMP E 
+WHERE SAL > (SELECT AVG(SAL) FROM SCOTT.EMP WHERE DEPTNO = E.DEPTNO);
+
+<span class="comment-q">-- 23. Display SCOTT.EMP earning the highest salary in each department.</span>
+SELECT * FROM SCOTT.EMP E 
+WHERE SAL = (SELECT MAX(SAL) FROM SCOTT.EMP WHERE DEPTNO = E.DEPTNO);
+
+<span class="comment-q">-- 24. Display SCOTT.EMP earning the lowest salary in each job.</span>
+SELECT * FROM SCOTT.EMP E 
+WHERE SAL = (SELECT MIN(SAL) FROM SCOTT.EMP WHERE JOB = E.JOB);
+
+<span class="comment-q">-- 25. Display departments having total salary greater than department 20.</span>
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO 
+HAVING SUM(SAL) > (SELECT SUM(SAL) FROM SCOTT.EMP WHERE DEPTNO = 20);
+
+<span class="comment-q">-- 26. Display SCOTT.EMP whose salary equals the maximum salary of their job.</span>
+SELECT * FROM SCOTT.EMP E 
+WHERE SAL = (SELECT MAX(SAL) FROM SCOTT.EMP WHERE JOB = E.JOB);
+
+<span class="comment-q">-- 27. Display SCOTT.EMP earning more than the overall average salary.</span>
+SELECT * FROM SCOTT.EMP WHERE SAL > (SELECT AVG(SAL) FROM SCOTT.EMP);
+
+<span class="comment-q">-- 28. Display department(s) having the maximum number of SCOTT.EMP.</span>
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO 
+HAVING COUNT(*) = (SELECT MAX(COUNT(*)) FROM SCOTT.EMP GROUP BY DEPTNO);
+
+<span class="comment-q">-- 29. Display jobs having minimum average salary.</span>
+SELECT JOB FROM SCOTT.EMP GROUP BY JOB 
+HAVING AVG(SAL) = (SELECT MIN(AVG(SAL)) FROM SCOTT.EMP GROUP BY JOB);
+
+<span class="comment-q">-- 30. Display SCOTT.EMP earning more than the average salary of CLERKs.</span>
+SELECT * FROM SCOTT.EMP WHERE SAL > (SELECT AVG(SAL) FROM SCOTT.EMP WHERE JOB = 'CLERK');
+
+<span class="comment-q">-- 31. Display department(s) where average salary is highest.</span>
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO 
+HAVING AVG(SAL) = (SELECT MAX(AVG(SAL)) FROM SCOTT.EMP GROUP BY DEPTNO);
+
+<span class="comment-q">-- 32. Display SCOTT.EMP earning more than the average salary of their own department.</span>
+SELECT * FROM SCOTT.EMP E WHERE SAL > (SELECT AVG(SAL) FROM SCOTT.EMP WHERE DEPTNO = E.DEPTNO);
+
+<span class="comment-q">-- 33. Display SCOTT.EMP earning the maximum salary in their department.</span>
+SELECT * FROM SCOTT.EMP E WHERE SAL = (SELECT MAX(SAL) FROM SCOTT.EMP WHERE DEPTNO = E.DEPTNO);
+
+<span class="comment-q">-- 34. Display SCOTT.EMP earning the minimum salary in their department.</span>
+SELECT * FROM SCOTT.EMP E WHERE SAL = (SELECT MIN(SAL) FROM SCOTT.EMP WHERE DEPTNO = E.DEPTNO);
+
+<span class="comment-q">-- 35. Display SCOTT.EMP whose salary is greater than the average salary of their job.</span>
+SELECT * FROM SCOTT.EMP E WHERE SAL > (SELECT AVG(SAL) FROM SCOTT.EMP WHERE JOB = E.JOB);
+
+<span class="comment-q">-- 36. Display SCOTT.EMP who are the only SCOTT.EMP in their department.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING COUNT(*) = 1);
+
+<span class="comment-q">-- 37. Display departments having SCOTT.EMP earning more than 5000.</span>
+SELECT DISTINCT DEPTNO FROM SCOTT.EMP WHERE SAL > 5000;
+
+<span class="comment-q">-- 38. Display SCOTT.EMP whose department has more than 3 SCOTT.EMP.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING COUNT(*) > 3);
+
+<span class="comment-q">-- 39. Display SCOTT.EMP whose job has more than 2 SCOTT.EMP.</span>
+SELECT * FROM SCOTT.EMP WHERE JOB IN (SELECT JOB FROM SCOTT.EMP GROUP BY JOB HAVING COUNT(*) > 2);
+
+<span class="comment-q">-- 40. Display SCOTT.EMP working in departments where no one gets commission.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING COUNT(COMM) = 0);
+
+<span class="comment-q">-- 41. Display SCOTT.EMP whose department has at least one manager.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.EMP WHERE JOB = 'MANAGER');
+
+<span class="comment-q">-- 42. Display departments that have SCOTT.EMP.</span>
+SELECT * FROM SCOTT.DEPT WHERE DEPTNO IN (SELECT DISTINCT DEPTNO FROM SCOTT.EMP);
+
+<span class="comment-q">-- 43. Display departments that have no SCOTT.EMP.</span>
+SELECT * FROM SCOTT.DEPT WHERE DEPTNO NOT IN (SELECT DISTINCT DEPTNO FROM SCOTT.EMP);
+
+<span class="comment-q">-- 44. Display SCOTT.EMP who are managers (have subordinates).</span>
+SELECT * FROM SCOTT.EMP WHERE SCOTT.EMP IN (SELECT DISTINCT MGR FROM SCOTT.EMP);
+
+<span class="comment-q">-- 45. Display SCOTT.EMP who are not managers.</span>
+SELECT * FROM SCOTT.EMP WHERE SCOTT.EMP NOT IN (SELECT DISTINCT MGR FROM SCOTT.EMP WHERE MGR IS NOT NULL);
+
+<span class="comment-q">-- 46. Display SCOTT.EMP working in departments where SALESMAN exists.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.EMP WHERE JOB = 'SALESMAN');
+
+<span class="comment-q">-- 47. Display departments where no SALESMAN exists.</span>
+SELECT * FROM SCOTT.DEPT WHERE DEPTNO NOT IN (SELECT DEPTNO FROM SCOTT.EMP WHERE JOB = 'SALESMAN');
+
+<span class="comment-q">-- 48. Display SCOTT.EMP whose department has SCOTT.EMP with commission.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.EMP WHERE COMM IS NOT NULL);
+
+<span class="comment-q">-- 49. Display departments where all SCOTT.EMP get commission.</span>
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING COUNT(*) = COUNT(COMM);
+
+<span class="comment-q">-- 50. Display SCOTT.EMP whose department has no CLERKs.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO NOT IN (SELECT DEPTNO FROM SCOTT.EMP WHERE JOB = 'CLERK');
+
+<span class="comment-q">-- 51. Display SCOTT.EMP who work in departments located in CHICAGO.</span>
+SELECT * FROM SCOTT.EMP WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.DEPT WHERE LOC = 'CHICAGO');
+
+<span class="comment-q">-- 52. Display department number and average salary of SCOTT.EMP whose salary is greater than 2000.</span>
+SELECT DEPTNO, AVG(SAL) FROM SCOTT.EMP WHERE SAL > 2000 GROUP BY DEPTNO;
+
+<span class="comment-q">-- 53. Display job and total salary of SCOTT.EMP earning more than the department average.</span>
+SELECT JOB, SUM(SAL) FROM SCOTT.EMP E 
+WHERE SAL > (SELECT AVG(SAL) FROM SCOTT.EMP WHERE DEPTNO = E.DEPTNO) GROUP BY JOB;
+
+<span class="comment-q">-- 54. Display departments having average salary greater than overall average salary.</span>
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING AVG(SAL) > (SELECT AVG(SAL) FROM SCOTT.EMP);
+
+<span class="comment-q">-- 55. Display job-wise SCOTT.EMP count from SCOTT.EMP earning more than 1500.</span>
+SELECT JOB, COUNT(*) FROM SCOTT.EMP WHERE SAL > 1500 GROUP BY JOB;
+
+<span class="comment-q">-- 56. Display departments having more than 2 SCOTT.EMP earning commission.</span>
+SELECT DEPTNO FROM SCOTT.EMP WHERE COMM IS NOT NULL GROUP BY DEPTNO HAVING COUNT(*) > 2;
+
+<span class="comment-q">-- 57. Display job and maximum salary from SCOTT.EMP hired after 1981.</span>
+SELECT JOB, MAX(SAL) FROM SCOTT.EMP WHERE HIREDATE > '31-DEC-81' GROUP BY JOB;
+
+<span class="comment-q">-- 58. Display department-wise total salary excluding department 30.</span>
+SELECT DEPTNO, SUM(SAL) FROM SCOTT.EMP WHERE DEPTNO <> 30 GROUP BY DEPTNO;
+
+<span class="comment-q">-- 59. Display departments having total salary greater than overall total salary average.</span>
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO 
+HAVING SUM(SAL) > (SELECT AVG(SUM(SAL)) FROM (SELECT SUM(SAL) FROM SCOTT.EMP GROUP BY DEPTNO));
+
+<span class="comment-q">-- 60. Display job-wise average salary where department has more than 3 SCOTT.EMP.</span>
+SELECT JOB, AVG(SAL) FROM SCOTT.EMP 
+WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING COUNT(*) > 3) GROUP BY JOB;
+
+<span class="comment-q">-- 61. Display department and job having maximum total salary.</span>
+SELECT DEPTNO, JOB, SUM(SAL) FROM SCOTT.EMP GROUP BY DEPTNO, JOB 
+HAVING SUM(SAL) = (SELECT MAX(SUM(SAL)) FROM SCOTT.EMP GROUP BY DEPTNO, JOB);
+
+<span class="comment-q">-- 62. Display SCOTT.EMP earning the second highest salary.</span>
+SELECT * FROM SCOTT.EMP WHERE SAL = (SELECT MAX(SAL) FROM SCOTT.EMP WHERE SAL < (SELECT MAX(SAL) FROM SCOTT.EMP));
+
+<span class="comment-q">-- 63. Display SCOTT.EMP earning more than the average salary of departments located in DALLAS.</span>
+SELECT * FROM SCOTT.EMP WHERE SAL > (SELECT AVG(SAL) FROM SCOTT.EMP WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.DEPT WHERE LOC = 'DALLAS'));
+
+<span class="comment-q">-- 64. Display departments where maximum salary equals minimum salary.</span>
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING MAX(SAL) = MIN(SAL);
+
+<span class="comment-q">-- 65. Display SCOTT.EMP whose salary is less than all MANAGERS but more than any CLERK.</span>
+SELECT * FROM SCOTT.EMP WHERE SAL < ALL (SELECT SAL FROM SCOTT.EMP WHERE JOB = 'MANAGER') 
+AND SAL > ANY (SELECT SAL FROM SCOTT.EMP WHERE JOB = 'CLERK');
+
+<span class="comment-q">-- 66. Display SCOTT.EMP whose salary is equal to department-wise second highest salary.</span>
+SELECT * FROM SCOTT.EMP E WHERE SAL = (SELECT MAX(SAL) FROM SCOTT.EMP WHERE DEPTNO = E.DEPTNO 
+AND SAL < (SELECT MAX(SAL) FROM SCOTT.EMP WHERE DEPTNO = E.DEPTNO));
+
+<span class="comment-q">-- 67. Display SCOTT.EMP earning more than the median salary.</span>
+SELECT * FROM SCOTT.EMP WHERE SAL > (SELECT MEDIAN(SAL) FROM SCOTT.EMP);
+
+<span class="comment-q">-- 68. Display SCOTT.EMP whose salary is greater than 50% of SCOTT.EMP.</span>
+SELECT * FROM SCOTT.EMP WHERE SAL > (SELECT MEDIAN(SAL) FROM SCOTT.EMP);
+
+<span class="comment-q">-- 69. Display SCOTT.EMP earning the third highest salary.</span>
+SELECT * FROM SCOTT.EMP WHERE SAL = (SELECT MAX(SAL) FROM SCOTT.EMP WHERE SAL < (SELECT MAX(SAL) FROM SCOTT.EMP 
+WHERE SAL < (SELECT MAX(SAL) FROM SCOTT.EMP)));
+    </pre>
+</div>
+
+<div class="list-item">
+    <h3>Scalar Functions (Date, Numeric, String, Conversion & General)</h3>
+    <pre>
+<span class="comment-q">-- 1. Display SCOTT.EMP name, hire date, and current date. Also calculate the number of days the SCOTT.EMP has worked.</span>
+SELECT ENAME, HIREDATE, SYSDATE,
+       SYSDATE - HIREDATE AS DAYS_WORKED
+FROM SCOTT.EMP;
+
+<span class="comment-q">-- 2. Display SCOTT.EMP name and hire date in the format: Monday, January 01, 2024.</span>
+SELECT ENAME,
+       TO_CHAR(HIREDATE, 'Day, Month DD, YYYY')
+FROM SCOTT.EMP;
+
+<span class="comment-q">-- 3. Find SCOTT.EMP who joined in the same month as the current system date (ignore year).</span>
+SELECT * FROM SCOTT.EMP
+WHERE TO_CHAR(HIREDATE, 'MM') = TO_CHAR(SYSDATE, 'MM');
+
+<span class="comment-q">-- 4. Display SCOTT.EMP name and the next Monday after their hire date.</span>
+SELECT ENAME,
+       NEXT_DAY(HIREDATE, 'MONDAY')
+FROM SCOTT.EMP;
+
+<span class="comment-q">-- 5. Display SCOTT.EMP name and the last day of their joining month.</span>
+SELECT ENAME,
+       LAST_DAY(HIREDATE)
+FROM SCOTT.EMP;
+
+<span class="comment-q">-- 6. Find SCOTT.EMP who have completed more than 10 years in the company.</span>
+SELECT * FROM SCOTT.EMP
+WHERE MONTHS_BETWEEN(SYSDATE, HIREDATE)/12 > 10;
+
+<span class="comment-q">-- 7. Display SCOTT.EMP name and number of months worked in the company.</span>
+SELECT ENAME,
+       MONTHS_BETWEEN(SYSDATE, HIREDATE) AS MONTHS_WORKED
+FROM SCOTT.EMP;
+
+<span class="comment-q">-- 8. Display SCOTT.EMP name, hire date, and hire date after adding 3 years and 6 months.</span>
+SELECT ENAME, HIREDATE,
+       ADD_MONTHS(HIREDATE, 42) AS NEW_DATE
+FROM SCOTT.EMP;
+
+<span class="comment-q">-- 9. Find SCOTT.EMP hired between two given dates (use TO_DATE).</span>
+SELECT * FROM SCOTT.EMP
+WHERE HIREDATE BETWEEN 
+TO_DATE('01-JAN-1981','DD-MON-YYYY')
+AND TO_DATE('31-DEC-1981','DD-MON-YYYY');
+
+<span class="comment-q">-- 10. Display the difference in years between SYSDATE and hire date (rounded).</span>
+SELECT ENAME,
+ROUND(MONTHS_BETWEEN(SYSDATE, HIREDATE)/12) AS YEARS
+FROM SCOTT.EMP;
+
+<span class="comment-q">-- 11. Display SCOTT.EMP name and salary rounded to the nearest 1000.</span>
+SELECT ENAME, ROUND(SAL, -3) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 12. Display salary truncated to 2 decimal places.</span>
+SELECT TRUNC(SAL, 2) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 13. Display SCOTT.EMP name and square root of salary.</span>
+SELECT ENAME, SQRT(SAL) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 14. Find the absolute difference between salary and 5000.</span>
+SELECT ABS(SAL - 5000) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 15. Display salary rounded up to the nearest integer.</span>
+SELECT CEIL(SAL) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 16. Display salary rounded down to the nearest integer.</span>
+SELECT FLOOR(SAL) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 17. Generate a random number between 1 and 500 for each SCOTT.EMP.</span>
+SELECT ENAME, DBMS_RANDOM.VALUE(1,500) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 18. Display remainder when salary is divided by 2000.</span>
+SELECT MOD(SAL, 2000) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 19. Display salary raised to the power of 3.</span>
+SELECT POWER(SAL, 3) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 20. Round salary to nearest hundred and thousand (two columns).</span>
+SELECT ROUND(SAL, -2), ROUND(SAL, -3) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 21. Display SCOTT.EMP names in uppercase and lowercase in two columns.</span>
+SELECT UPPER(ENAME), LOWER(ENAME) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 22. Display SCOTT.EMP name and its length.</span>
+SELECT ENAME, LENGTH(ENAME) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 23. Display first 4 characters of SCOTT.EMP name.</span>
+SELECT SUBSTR(ENAME,1,4) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 24. Concatenate SCOTT.EMP name and job using - symbol.</span>
+SELECT ENAME || '-' || JOB FROM SCOTT.EMP;
+
+<span class="comment-q">-- 25. Replace all occurrences of letter ‘A’ with ‘#’ in SCOTT.EMP names.</span>
+SELECT REPLACE(ENAME,'A','#') FROM SCOTT.EMP;
+
+<span class="comment-q">-- 26. Display position of first occurrence of ‘E’ in SCOTT.EMP name.</span>
+SELECT INSTR(ENAME,'E') FROM SCOTT.EMP;
+
+<span class="comment-q">-- 27. Remove leading and trailing spaces from SCOTT.EMP name.</span>
+SELECT TRIM(ENAME) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 28. Display SCOTT.EMP name with first letter capital and rest lowercase.</span>
+SELECT INITCAP(ENAME) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 29. Display last 3 characters of SCOTT.EMP name.</span>
+SELECT SUBSTR(ENAME,-3) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 30. Pad SCOTT.EMP name with * on the left to make total length 10.</span>
+SELECT LPAD(ENAME,10,'*') FROM SCOTT.EMP;
+
+<span class="comment-q">-- 31. Display SCOTT.EMP name with spaces removed.</span>
+SELECT REPLACE(ENAME,' ','') FROM SCOTT.EMP;
+
+<span class="comment-q">-- 32. Display SCOTT.EMP names starting with ‘S’.</span>
+SELECT * FROM SCOTT.EMP WHERE ENAME LIKE 'S%';
+
+<span class="comment-q">-- 33. Count number of characters excluding spaces.</span>
+SELECT LENGTH(REPLACE(ENAME,' ','')) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 34. Display SCOTT.EMP name reversed.</span>
+SELECT REVERSE(ENAME) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 35. Extract domain name from email column.</span>
+SELECT SUBSTR(EMAIL, INSTR(EMAIL,'@')+1) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 36. Convert current date into format: DD/MM/YYYY.</span>
+SELECT TO_CHAR(SYSDATE,'DD/MM/YYYY') FROM DUAL;
+
+<span class="comment-q">-- 37. Convert string '15-AUG-2020' into DATE format.</span>
+SELECT TO_DATE('15-AUG-2020','DD-MON-YYYY') FROM DUAL;
+
+<span class="comment-q">-- 38. Convert salary into character with currency format (₹10,000).</span>
+SELECT TO_CHAR(SAL,'₹99,999') FROM SCOTT.EMP;
+
+<span class="comment-q">-- 39. Convert number 12345 into string with commas.</span>
+SELECT TO_CHAR(12345,'99,999') FROM DUAL;
+
+<span class="comment-q">-- 40. Convert hire date into format: Month DD, YYYY.</span>
+SELECT TO_CHAR(HIREDATE,'Month DD, YYYY') FROM SCOTT.EMP;
+
+<span class="comment-q">-- 41. Convert string column to number and perform arithmetic operation.</span>
+SELECT TO_NUMBER('1000') + 500 FROM DUAL;
+
+<span class="comment-q">-- 42. Handle invalid date format using TO_DATE safely.</span>
+SELECT TO_DATE('15-08-2020','DD-MM-YYYY') FROM DUAL;
+
+<span class="comment-q">-- 43. Convert SYSDATE into year only.</span>
+SELECT TO_CHAR(SYSDATE,'YYYY') FROM DUAL;
+
+<span class="comment-q">-- 44. Convert salary into string and concatenate with text.</span>
+SELECT 'Salary: ' || TO_CHAR(SAL) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 45. Display hire date in multiple formats (3 columns).</span>
+SELECT TO_CHAR(HIREDATE,'DD/MM/YYYY'),
+       TO_CHAR(HIREDATE,'MON YYYY'),
+       TO_CHAR(HIREDATE,'DAY')
+FROM SCOTT.EMP;
+
+<span class="comment-q">-- 46. Display SCOTT.EMP name and salary. If salary is NULL, display 0.</span>
+SELECT ENAME, NVL(SAL,0) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 47. Display SCOTT.EMP name and commission. If NULL, display ‘No Commission’.</span>
+SELECT ENAME, NVL(TO_CHAR(COMM),'No Commission') FROM SCOTT.EMP;
+
+<span class="comment-q">-- 48. Use NVL2 to show commission status (Has/No Commission).</span>
+SELECT ENAME,
+NVL2(COMM,'Has Commission','No Commission')
+FROM SCOTT.EMP;
+
+<span class="comment-q">-- 49. Use COALESCE to display first non-null value among salary, commission, bonus.</span>
+SELECT COALESCE(SAL, COMM, 0) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 50. Display SCOTT.EMP salary; if NULL replace with average salary.</span>
+SELECT ENAME,
+NVL(SAL,(SELECT AVG(SAL) FROM SCOTT.EMP))
+FROM SCOTT.EMP;
+
+<span class="comment-q">-- 51. Use NULLIF to compare salary and commission.</span>
+SELECT NULLIF(SAL, COMM) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 52. Replace NULL department name with ‘No Department’.</span>
+SELECT NVL(DNAME,'No Department') FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 53. Display SCOTT.EMP whose commission is NULL.</span>
+SELECT * FROM SCOTT.EMP WHERE COMM IS NULL;
+
+<span class="comment-q">-- 54. Use DECODE to categorize salary (Low/Medium/High).</span>
+SELECT ENAME,
+DECODE(
+    SIGN(SAL-3000),
+    -1,'Low',
+    0,'Medium',
+    1,'High'
+) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 55. Use CASE to categorize SCOTT.EMP based on experience.</span>
+SELECT ENAME,
+CASE 
+    WHEN MONTHS_BETWEEN(SYSDATE,HIREDATE)/12 < 2 THEN 'Fresher'
+    WHEN MONTHS_BETWEEN(SYSDATE,HIREDATE)/12 BETWEEN 2 AND 5 THEN 'Mid'
+    ELSE 'Experienced'
+END
+FROM SCOTT.EMP;
+
+<span class="comment-q">-- 56. Display job; if NULL show ‘Unknown Job’.</span>
+SELECT NVL(JOB,'Unknown Job') FROM SCOTT.EMP;
+
+<span class="comment-q">-- 57. Use NVL with date columns.</span>
+SELECT NVL(HIREDATE, SYSDATE) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 58. Display SCOTT.EMP name and bonus; if NULL calculate 10% of salary.</span>
+SELECT ENAME,
+NVL(COMM, SAL*0.10) AS BONUS
+FROM SCOTT.EMP;
+
+<span class="comment-q">-- 59. Use COALESCE with multiple NULL columns.</span>
+SELECT COALESCE(COMM, SAL*0.10, 0) FROM SCOTT.EMP;
+
+<span class="comment-q">-- 60. Combine NVL and TO_CHAR for formatted output.</span>
+SELECT ENAME,
+'Salary: ' || NVL(TO_CHAR(SAL),'0')
+FROM SCOTT.EMP;
+    </pre>
+</div>
+
+<div class="list-item">
+    <h3>Joins & Multi-table Queries</h3>
+    <pre>
+<span class="comment-q">-- 1. Display SCOTT.EMP name and department name.</span>
+SELECT E.ENAME, D.DNAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO;
+
+<span class="comment-q">-- 2. Display SCOTT.EMP name, salary, and department location.</span>
+SELECT E.ENAME, E.SAL, D.LOC 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO;
+
+<span class="comment-q">-- 3. Display SCOTT.EMP name and department name for department 10.</span>
+SELECT E.ENAME, D.DNAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WHERE E.DEPTNO = 10;
+
+<span class="comment-q">-- 4. Display SCOTT.EMP name and department name where salary > 2000.</span>
+SELECT E.ENAME, D.DNAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WHERE E.SAL > 2000;
+
+<span class="comment-q">-- 5. Display SCOTT.EMP name, job, and department name.</span>
+SELECT E.ENAME, E.JOB, D.DNAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO;
+
+<span class="comment-q">-- 6. Display SCOTT.EMP name and department location for CLERKs.</span>
+SELECT E.ENAME, D.LOC 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WHERE E.JOB = 'CLERK';
+
+<span class="comment-q">-- 7. Display SCOTT.EMP name and department name working in NEW YORK.</span>
+SELECT E.ENAME, D.DNAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WHERE D.LOC = 'NEW YORK';
+
+<span class="comment-q">-- 8. Display SCOTT.EMP name, department number, and department name.</span>
+SELECT E.ENAME, E.DEPTNO, D.DNAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO;
+
+<span class="comment-q">-- 9. Display SCOTT.EMP hired after 1981 with department name.</span>
+SELECT E.*, D.DNAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WHERE E.HIREDATE > '31-DEC-81';
+
+<span class="comment-q">-- 10. Display SCOTT.EMP with commission along with department name.</span>
+SELECT E.ENAME, E.COMM, D.DNAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WHERE E.COMM IS NOT NULL;
+
+<span class="comment-q">-- 11. Display SCOTT.EMP whose salary is between 1500 and 3000 with department.</span>
+SELECT E.ENAME, E.SAL, D.DNAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WHERE E.SAL BETWEEN 1500 AND 3000;
+
+<span class="comment-q">-- 12. Display SCOTT.EMP who are the only SCOTT.EMP in their department.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE DEPTNO IN (SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING COUNT(*) = 1);
+
+<span class="comment-q">-- 13. Display SCOTT.EMP whose department has more than 3 SCOTT.EMP.</span>
+SELECT E.*, D.DNAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WHERE E.DEPTNO IN (SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING COUNT(*) > 3);
+
+<span class="comment-q">-- 14. Display departments where no SCOTT.EMP earns more than 2000.</span>
+SELECT * FROM SCOTT.DEPT 
+WHERE DEPTNO NOT IN (SELECT DISTINCT DEPTNO FROM SCOTT.EMP WHERE SAL > 2000);
+
+<span class="comment-q">-- 15. Display SCOTT.EMP who earn more than at least one manager.</span>
+SELECT * FROM SCOTT.EMP 
+WHERE SAL > ANY (SELECT SAL FROM SCOTT.EMP WHERE SCOTT.EMP IN (SELECT DISTINCT MGR FROM SCOTT.EMP));
+
+<span class="comment-q">-- 16. Display SCOTT.EMP who share same job and department.</span>
+SELECT E1.ENAME, E1.JOB, E1.DEPTNO 
+FROM SCOTT.EMP E1, SCOTT.EMP E2 
+WHERE E1.JOB = E2.JOB AND E1.DEPTNO = E2.DEPTNO AND E1.SCOTT.EMP <> E2.SCOTT.EMP;
+
+<span class="comment-q">-- 17. Display SCOTT.EMP working in same department as their manager.</span>
+SELECT E.ENAME 
+FROM SCOTT.EMP E JOIN SCOTT.EMP M ON E.MGR = M.SCOTT.EMP 
+WHERE E.DEPTNO = M.DEPTNO;
+
+<span class="comment-q">-- 18. Display SCOTT.EMP whose manager works in a different department.</span>
+SELECT E.ENAME 
+FROM SCOTT.EMP E JOIN SCOTT.EMP M ON E.MGR = M.SCOTT.EMP 
+WHERE E.DEPTNO <> M.DEPTNO;
+
+<span class="comment-q">-- 19. Display SCOTT.EMP who are highest paid in their department.</span>
+SELECT E.* FROM SCOTT.EMP E 
+WHERE SAL = (SELECT MAX(SAL) FROM SCOTT.EMP WHERE DEPTNO = E.DEPTNO);
+
+<span class="comment-q">-- 20. Display SCOTT.EMP earning more than their department average.</span>
+SELECT E.* FROM SCOTT.EMP E 
+WHERE SAL > (SELECT AVG(SAL) FROM SCOTT.EMP WHERE DEPTNO = E.DEPTNO);
+
+<span class="comment-q">-- 21. Display department with maximum SCOTT.EMP.</span>
+SELECT D.DNAME 
+FROM SCOTT.DEPT D JOIN SCOTT.EMP E ON D.DEPTNO = E.DEPTNO 
+GROUP BY D.DNAME 
+HAVING COUNT(*) = (SELECT MAX(COUNT(*)) FROM SCOTT.EMP GROUP BY DEPTNO);
+
+<span class="comment-q">-- 22. Display department with highest total salary.</span>
+SELECT D.DNAME 
+FROM SCOTT.DEPT D JOIN SCOTT.EMP E ON D.DEPTNO = E.DEPTNO 
+GROUP BY D.DNAME 
+HAVING SUM(E.SAL) = (SELECT MAX(SUM(SAL)) FROM SCOTT.EMP GROUP BY DEPTNO);
+
+<span class="comment-q">-- 23. Display department name and average salary.</span>
+SELECT D.DNAME, AVG(E.SAL) 
+FROM SCOTT.DEPT D JOIN SCOTT.EMP E ON D.DEPTNO = E.DEPTNO 
+GROUP BY D.DNAME;
+
+<span class="comment-q">-- 24. Display department name and total salary.</span>
+SELECT D.DNAME, SUM(E.SAL) 
+FROM SCOTT.DEPT D JOIN SCOTT.EMP E ON D.DEPTNO = E.DEPTNO 
+GROUP BY D.DNAME;
+
+<span class="comment-q">-- 25. Display department name and number of SCOTT.EMP.</span>
+SELECT D.DNAME, COUNT(E.SCOTT.EMP) 
+FROM SCOTT.DEPT D LEFT JOIN SCOTT.EMP E ON D.DEPTNO = E.DEPTNO 
+GROUP BY D.DNAME;
+
+<span class="comment-q">-- 26. Display SCOTT.EMP not assigned to any department.</span>
+SELECT ENAME FROM SCOTT.EMP WHERE DEPTNO IS NULL;
+
+<span class="comment-q">-- 27. Display departments with no SCOTT.EMP.</span>
+SELECT DNAME FROM SCOTT.DEPT WHERE DEPTNO NOT IN (SELECT DISTINCT DEPTNO FROM SCOTT.EMP WHERE DEPTNO IS NOT NULL);
+
+<span class="comment-q">-- 28. Display all departments (even if no SCOTT.EMP).</span>
+SELECT D.DNAME, E.ENAME 
+FROM SCOTT.DEPT D LEFT JOIN SCOTT.EMP E ON D.DEPTNO = E.DEPTNO;
+
+<span class="comment-q">-- 29. Display all SCOTT.EMP with department name (even if no department).</span>
+SELECT E.ENAME, D.DNAME 
+FROM SCOTT.EMP E LEFT JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO;
+
+<span class="comment-q">-- 30. Display SCOTT.EMP whose manager works in department 10.</span>
+SELECT E.ENAME 
+FROM SCOTT.EMP E JOIN SCOTT.EMP M ON E.MGR = M.SCOTT.EMP 
+WHERE M.DEPTNO = 10;
+
+<span class="comment-q">-- 31. Display SCOTT.EMP working under the same manager.</span>
+SELECT E1.ENAME, E1.MGR 
+FROM SCOTT.EMP E1, SCOTT.EMP E2 
+WHERE E1.MGR = E2.MGR AND E1.SCOTT.EMP <> E2.SCOTT.EMP;
+
+<span class="comment-q">-- 32. Display SCOTT.EMP earning more than their manager.</span>
+SELECT E.ENAME 
+FROM SCOTT.EMP E JOIN SCOTT.EMP M ON E.MGR = M.SCOTT.EMP 
+WHERE E.SAL > M.SAL;
+
+<span class="comment-q">-- 33. Display SCOTT.EMP name and manager salary.</span>
+SELECT E.ENAME, M.SAL AS MGR_SALARY 
+FROM SCOTT.EMP E JOIN SCOTT.EMP M ON E.MGR = M.SCOTT.EMP;
+
+<span class="comment-q">-- 34. Display SCOTT.EMP who are managers.</span>
+SELECT DISTINCT M.ENAME 
+FROM SCOTT.EMP E JOIN SCOTT.EMP M ON E.MGR = M.SCOTT.EMP;
+
+<span class="comment-q">-- 35. Display SCOTT.EMP who do not have managers.</span>
+SELECT ENAME FROM SCOTT.EMP WHERE MGR IS NULL;
+
+<span class="comment-q">-- 36. Display SCOTT.EMP name and manager name.</span>
+SELECT E.ENAME AS SCOTT.EMP, M.ENAME AS MANAGER 
+FROM SCOTT.EMP E LEFT JOIN SCOTT.EMP M ON E.MGR = M.SCOTT.EMP;
+
+<span class="comment-q">-- 37. Display SCOTT.EMP whose department location is DALLAS.</span>
+SELECT E.ENAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WHERE D.LOC = 'DALLAS';
+
+<span class="comment-q">-- 38. Display SCOTT.EMP whose department is ACCOUNTING.</span>
+SELECT E.ENAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WHERE D.DNAME = 'ACCOUNTING';
+
+<span class="comment-q">-- 39. Display SCOTT.EMP not working in department 30 with department name.</span>
+SELECT E.ENAME, D.DNAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WHERE E.DEPTNO <> 30;
+
+<span class="comment-q">-- 40. Display SCOTT.EMP whose job is MANAGER with department location.</span>
+SELECT E.ENAME, D.LOC 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WHERE E.JOB = 'MANAGER';
+    </pre>
+</div>
+
+
+<div class="list-item">
+    <h3>Set Operators - UNION, INTERSECT & MINUS</h3>
+    <pre>
+<span class="comment-q">-- 1. Display all department numbers from both SCOTT.EMP and SCOTT.DEPT tables using UNION.</span>
+SELECT DEPTNO FROM SCOTT.EMP
+UNION
+SELECT DEPTNO FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 2. Display all department numbers from SCOTT.EMP and SCOTT.DEPT including duplicates using UNION ALL.</span>
+SELECT DEPTNO FROM SCOTT.EMP
+UNION ALL
+SELECT DEPTNO FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 3. Display department numbers that are present in both SCOTT.EMP and SCOTT.DEPT using INTERSECT.</span>
+SELECT DEPTNO FROM SCOTT.EMP
+INTERSECT
+SELECT DEPTNO FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 4. Display department numbers that are present in SCOTT.EMP but not in SCOTT.DEPT using MINUS.</span>
+SELECT DEPTNO FROM SCOTT.EMP
+MINUS
+SELECT DEPTNO FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 5. Display department numbers that are present in SCOTT.DEPT but not assigned to any SCOTT.EMP.</span>
+SELECT DEPTNO FROM SCOTT.DEPT
+MINUS
+SELECT DEPTNO FROM SCOTT.EMP;
+
+<span class="comment-q">-- 6. Display SCOTT.EMP names and department names in a single column using UNION.</span>
+SELECT ENAME AS NAME FROM SCOTT.EMP
+UNION
+SELECT DNAME AS NAME FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 7. Display all SCOTT.EMP names and department names, including duplicates.</span>
+SELECT ENAME AS NAME FROM SCOTT.EMP
+UNION ALL
+SELECT DNAME AS NAME FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 8. Display jobs that exist in SCOTT.EMP table and also exist as department names in SCOTT.DEPT table (use INTERSECT).</span>
+SELECT JOB FROM SCOTT.EMP
+INTERSECT
+SELECT DNAME FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 9. Display SCOTT.EMP names that are not department names.</span>
+SELECT ENAME FROM SCOTT.EMP
+MINUS
+SELECT DNAME FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 10. Display department locations that are not used by any SCOTT.EMP.</span>
+SELECT LOC FROM SCOTT.DEPT
+MINUS
+SELECT D.LOC FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO;
+
+<span class="comment-q">-- 11. Display SCOTT.EMP names from department 10 and department 20 using UNION.</span>
+SELECT ENAME FROM SCOTT.EMP WHERE DEPTNO = 10
+UNION
+SELECT ENAME FROM SCOTT.EMP WHERE DEPTNO = 20;
+
+<span class="comment-q">-- 12. Display SCOTT.EMP names from department 10 and department 20 including duplicates.</span>
+SELECT ENAME FROM SCOTT.EMP WHERE DEPTNO = 10
+UNION ALL
+SELECT ENAME FROM SCOTT.EMP WHERE DEPTNO = 20;
+
+<span class="comment-q">-- 13. Display SCOTT.EMP who work in departments that exist in SCOTT.DEPT table using INTERSECT.</span>
+SELECT ENAME FROM SCOTT.EMP WHERE DEPTNO IN (
+    SELECT DEPTNO FROM SCOTT.EMP
+    INTERSECT
+    SELECT DEPTNO FROM SCOTT.DEPT
+);
+
+<span class="comment-q">-- 14. Display SCOTT.EMP whose department does not exist in SCOTT.DEPT table using MINUS.</span>
+SELECT ENAME FROM SCOTT.EMP WHERE DEPTNO IN (
+    SELECT DEPTNO FROM SCOTT.EMP
+    MINUS
+    SELECT DEPTNO FROM SCOTT.DEPT
+);
+
+<span class="comment-q">-- 15. Display department numbers that have SCOTT.EMP and also exist in SCOTT.DEPT table.</span>
+SELECT DEPTNO FROM SCOTT.EMP
+INTERSECT
+SELECT DEPTNO FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 16. Display all unique job roles from SCOTT.EMP and all unique department names from SCOTT.DEPT in one result.</span>
+SELECT JOB AS UNIFIED_DATA FROM SCOTT.EMP
+UNION
+SELECT DNAME AS UNIFIED_DATA FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 17. Display common values between SCOTT.EMP job and department location.</span>
+SELECT JOB FROM SCOTT.EMP
+INTERSECT
+SELECT LOC FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 18. Display SCOTT.EMP names who are not assigned to any valid department.</span>
+SELECT ENAME FROM SCOTT.EMP 
+WHERE DEPTNO NOT IN (SELECT DEPTNO FROM SCOTT.DEPT);
+
+<span class="comment-q">-- 19. Combine: SCOTT.EMP earning more than 2000 and SCOTT.EMP from department 10 using UNION.</span>
+SELECT ENAME FROM SCOTT.EMP WHERE SAL > 2000
+UNION
+SELECT ENAME FROM SCOTT.EMP WHERE DEPTNO = 10;
+
+<span class="comment-q">-- 20. Display SCOTT.EMP who work in department 10 but not in department 20 using MINUS.</span>
+-- (Note: An SCOTT.EMP cannot be in two depts, but this follows the logic of the prompt)
+SELECT ENAME FROM SCOTT.EMP WHERE DEPTNO = 10
+MINUS
+SELECT ENAME FROM SCOTT.EMP WHERE DEPTNO = 20;
+
+<span class="comment-q">-- 21. Display department numbers that: Exist in SCOTT.EMP, Exist in SCOTT.DEPT, But exclude department 10.</span>
+(SELECT DEPTNO FROM SCOTT.EMP
+ INTERSECT
+ SELECT DEPTNO FROM SCOTT.DEPT)
+MINUS
+SELECT 10 FROM DUAL;
+
+<span class="comment-q">-- 22. Display all SCOTT.EMP names and department names in a single result sorted alphabetically.</span>
+SELECT ENAME AS NAME FROM SCOTT.EMP
+UNION
+SELECT DNAME AS NAME FROM SCOTT.DEPT
+ORDER BY 1;
+
+<span class="comment-q">-- 23. Display department numbers that appear in SCOTT.EMP more than once using UNION ALL.</span>
+-- (Logic: Extract depts where count > 1)
+SELECT DEPTNO FROM SCOTT.EMP GROUP BY DEPTNO HAVING COUNT(*) > 1;
+
+<span class="comment-q">-- 24. Display SCOTT.EMP from departments located in NEW YORK and DALLAS using UNION.</span>
+SELECT E.ENAME FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO WHERE D.LOC = 'NEW YORK'
+UNION
+SELECT E.ENAME FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO WHERE D.LOC = 'DALLAS';
+
+<span class="comment-q">-- 25. Combine results of: EMP with salary > 3000 and SCOTT.EMP with job = 'MANAGER' (Remove duplicates).</span>
+SELECT ENAME FROM SCOTT.EMP WHERE SAL > 3000
+UNION
+SELECT ENAME FROM SCOTT.EMP WHERE JOB = 'MANAGER';
+    </pre>
+</div>
+
+
+<div class="list-item">
+    <h3>Views and Materialized Views</h3>
+    <pre>
+<span class="comment-q">-- 1. Create a view to display EMP name, salary, and department number from SCOTT.EMP table.</span>
+CREATE VIEW SCOTT.EMP AS 
+SELECT ENAME, SAL, DEPTNO FROM SCOTT.EMP;
+
+<span class="comment-q">-- 2. Create a view to display EMP name and department name by joining EMP and DEPT tables.</span>
+CREATE VIEW SCOTT.EMP AS 
+SELECT E.ENAME, D.DNAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO;
+
+<span class="comment-q">-- 3. Create a view to display EMP working in department 10.</span>
+CREATE VIEW DEPT10_VW AS 
+SELECT * FROM SCOTT.EMP WHERE DEPTNO = 10;
+
+<span class="comment-q">-- 4. Create a view to display EMP name, job, and annual salary (SAL * 12).</span>
+CREATE VIEW SCOTT.EMP AS 
+SELECT ENAME, JOB, SAL * 12 AS ANNUAL_SALARY FROM SCOTT.EMP;
+
+<span class="comment-q">-- 5. Create a view to display department name and location from DEPT table.</span>
+CREATE VIEW DEPT_LOC_VW AS 
+SELECT DNAME, LOC FROM SCOTT.DEPT;
+
+<span class="comment-q">-- 6. Create a view to display EMP name, department name, and location.</span>
+CREATE VIEW SCOTT.EMP AS 
+SELECT E.ENAME, D.DNAME, D.LOC 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO;
+
+<span class="comment-q">-- 7. Create a view to display EMP earning more than 3000.</span>
+CREATE VIEW HIGH_SAL_VW AS 
+SELECT * FROM SCOTT.EMP WHERE SAL > 3000;
+
+<span class="comment-q">-- 8. Create a view to display department-wise total salary using EMP table.</span>
+CREATE VIEW DEPT_SAL_VW AS 
+SELECT DEPTNO, SUM(SAL) AS TOTAL_SAL FROM SCOTT.EMP GROUP BY DEPTNO;
+
+<span class="comment-q">-- 9. Create a view to display only managers (JOB = 'MANAGER').</span>
+CREATE VIEW MANAGER_VW AS 
+SELECT * FROM SCOTT.EMP WHERE JOB = 'MANAGER';
+
+<span class="comment-q">-- 10. Create a view with column aliases for EMP name and salary.</span>
+CREATE VIEW SCOTT.EMP (NAME, PAY) AS 
+SELECT ENAME, SAL FROM SCOTT.EMP;
+
+<span class="comment-q">-- 11. Create a view for EMP in department 20 with WITH CHECK OPTION.</span>
+CREATE VIEW DEPT20_CHECK_VW AS 
+SELECT * FROM SCOTT.EMP WHERE DEPTNO = 20 
+WITH CHECK OPTION;
+
+<span class="comment-q">-- 12. Insert a new EMP into the above view with department 20.</span>
+INSERT INTO DEPT20_CHECK_VW (SCOTT.EMP, ENAME, DEPTNO) 
+VALUES (1001, 'SHANU', 20);
+
+<span class="comment-q">-- 13. Try inserting an EMP with department 30 into the same view.</span>
+-- Result: ORA-01402: view WITH CHECK OPTION where-clause violation
+INSERT INTO DEPT20_CHECK_VW (SCOTT.EMP, ENAME, DEPTNO) 
+VALUES (1002, 'INVALID_USER', 30);
+
+<span class="comment-q">-- 14. Update department number through the view from 20 to 30. What happens?</span>
+-- Result: ORA-01402: cannot update because the resulting row would fall outside the view's scope
+UPDATE DEPT20_CHECK_VW SET DEPTNO = 30 WHERE ENAME = 'SHANU';
+
+<span class="comment-q">-- 15. Create a view for EMP with salary > 2000 and enforce condition using WITH CHECK OPTION.</span>
+CREATE VIEW SAL_CHECK_VW AS 
+SELECT * FROM SCOTT.EMP WHERE SAL > 2000 
+WITH CHECK OPTION;
+
+<span class="comment-q">-- 16. Create a READ ONLY view to display EMP details.</span>
+CREATE VIEW SCOTT.EMP AS 
+SELECT * FROM SCOTT.EMP 
+WITH READ ONLY;
+
+<span class="comment-q">-- 17. Create a READ ONLY view to display EMP name and department name.</span>
+CREATE VIEW JOIN_READ_ONLY_VW AS 
+SELECT E.ENAME, D.DNAME 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WITH READ ONLY;
+
+<span class="comment-q">-- 18. Try updating salary through a READ ONLY view.</span>
+-- Result: ORA-42399: cannot perform a DML operation on a read-only view
+UPDATE SCOTT.EMP SET SAL = 5000 WHERE ENAME = 'KING';
+
+<span class="comment-q">-- 19. Try inserting a new EMP through a READ ONLY view.</span>
+-- Result: ORA-42399: cannot perform a DML operation on a read-only view
+INSERT INTO SCOTT.EMP (SCOTT.EMP, ENAME) VALUES (9999, 'NEW_USER');
+
+<span class="comment-q">-- 20. Create a READ ONLY view for EMP in department 10.</span>
+CREATE VIEW DEPT10_READ_ONLY AS 
+SELECT * FROM SCOTT.EMP WHERE DEPTNO = 10 
+WITH READ ONLY;
+
+<span class="comment-q">-- 21. Create a materialized view to store EMP name and salary from SCOTT.EMP table.</span>
+CREATE MATERIALIZED VIEW MV_SCOTT.EMP AS 
+SELECT ENAME, SAL FROM SCOTT.EMP;
+
+<span class="comment-q">-- 22. Create a materialized view to store EMP name and department name using SCOTT.EMP and SCOTT.DEPT tables.</span>
+CREATE MATERIALIZED VIEW MV_SCOTT.EMP AS 
+SELECT E.ENAME, D.DNAME FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO;
+
+<span class="comment-q">-- 23. Create a materialized view with REFRESH COMPLETE for SCOTT.EMP table.</span>
+CREATE MATERIALIZED VIEW MV_REF_COMPLETE 
+REFRESH COMPLETE AS 
+SELECT * FROM SCOTT.EMP;
+
+<span class="comment-q">-- 24. Create a materialized view with REFRESH FAST (assume logs exist).</span>
+-- Pre-requisite: CREATE MATERIALIZED VIEW LOG ON SCOTT.EMP;
+CREATE MATERIALIZED VIEW MV_REF_FAST 
+REFRESH FAST AS 
+SELECT * FROM SCOTT.EMP;
+
+<span class="comment-q">-- 25. Create a materialized view with REFRESH ON COMMIT.</span>
+CREATE MATERIALIZED VIEW MV_REF_COMMIT 
+REFRESH ON COMMIT AS 
+SELECT * FROM SCOTT.EMP;
+
+<span class="comment-q">-- 26. Create a materialized view to store department-wise total salary.</span>
+CREATE MATERIALIZED VIEW MV_DEPT_TOTAL_SAL AS 
+SELECT DEPTNO, SUM(SAL) AS TOTAL_SAL FROM SCOTT.EMP GROUP BY DEPTNO;
+
+<span class="comment-q">-- 27. Create a materialized view with BUILD IMMEDIATE option.</span>
+CREATE MATERIALIZED VIEW MV_BUILD_IMMEDIATE 
+BUILD IMMEDIATE AS 
+SELECT * FROM SCOTT.EMP;
+
+<span class="comment-q">-- 28. Create a materialized view with BUILD DEFERRED option.</span>
+CREATE MATERIALIZED VIEW MV_BUILD_DEFERRED 
+BUILD DEFERRED AS 
+SELECT * FROM SCOTT.EMP;
+
+<span class="comment-q">-- 29. Refresh a materialized view manually.</span>
+EXEC DBMS_MVIEW.REFRESH('MV_SCOTT.EMP');
+
+<span class="comment-q">-- 30. Drop a materialized view created on EMP table.</span>
+DROP MATERIALIZED VIEW MV_SCOTT.EMP;
+
+<span class="comment-q">-- 31. Create a view joining EMP and DEPT and restrict it using WITH CHECK OPTION.</span>
+CREATE VIEW DEPT10_JOIN_CHECK_VW AS 
+SELECT E.ENAME, E.DEPTNO, D.DNAME FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WHERE E.DEPTNO = 10 
+WITH CHECK OPTION;
+
+<span class="comment-q">-- 32. Create a READ ONLY view that shows EMP name, department name, and salary.</span>
+CREATE VIEW SCOTT.EMP AS 
+SELECT E.ENAME, D.DNAME, E.SAL 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+WITH READ ONLY;
+
+<span class="comment-q">-- 33. Create a complex view to display department name and highest salary in each department.</span>
+CREATE VIEW DEPT_MAX_SAL_VW AS 
+SELECT D.DNAME, MAX(E.SAL) AS MAX_SAL 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+GROUP BY D.DNAME;
+
+<span class="comment-q">-- 34. Create a materialized view based on the above complex query.</span>
+CREATE MATERIALIZED VIEW MV_DEPT_MAX_SAL AS 
+SELECT D.DNAME, MAX(E.SAL) AS MAX_SAL 
+FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO 
+GROUP BY D.DNAME;
+
+<span class="comment-q">-- 35. Create a view that hides salary but shows EMP name and department name for security.</span>
+CREATE VIEW SCOTT.EMP AS 
+SELECT E.ENAME, D.DNAME FROM SCOTT.EMP E JOIN SCOTT.DEPT D ON E.DEPTNO = D.DEPTNO;
+    </pre>
+</div>
+
+<div class="list-item">
+    <h3>DCL & TCL (Data Control & Transaction Control)</h3>
+    <pre>
+<span class="comment-q">-- 1. Grant SELECT privilege on EMP table to a user named USER1.</span>
+GRANT SELECT ON SCOTT.EMP TO USER1;
+
+<span class="comment-q">-- 2. Grant SELECT and INSERT privileges on EMP table to USER2.</span>
+GRANT SELECT, INSERT ON SCOTT.EMP TO USER2;
+
+<span class="comment-q">-- 3. Grant all privileges on DEPT table to USER3.</span>
+GRANT ALL ON SCOTT.DEPT TO USER3;
+
+<span class="comment-q">-- 4. Grant SELECT privilege on EMP table to USER4 with GRANT OPTION.</span>
+GRANT SELECT ON SCOTT.EMP TO USER4 WITH GRANT OPTION;
+
+<span class="comment-q">-- 5. Grant UPDATE privilege only on SAL column of EMP table to USER5.</span>
+GRANT UPDATE (SAL) ON SCOTT.EMP TO USER5;
+
+<span class="comment-q">-- 6. Grant DELETE privilege on EMP table to USER6.</span>
+GRANT DELETE ON SCOTT.EMP TO USER6;
+
+<span class="comment-q">-- 7. Grant SELECT privilege on both EMP and DEPT tables to USER7.</span>
+GRANT SELECT ON SCOTT.EMP, SCOTT.DEPT TO USER7;
+
+<span class="comment-q">-- 8. Grant privileges on EMP table to PUBLIC.</span>
+GRANT SELECT ON SCOTT.EMP TO PUBLIC;
+
+<span class="comment-q">-- 9. Grant INSERT privilege on EMP table to USER8 with the ability to grant further.</span>
+GRANT INSERT ON SCOTT.EMP TO USER8 WITH GRANT OPTION;
+
+<span class="comment-q">-- 10. Grant UPDATE and DELETE privileges on EMP table to USER9.</span>
+GRANT UPDATE, DELETE ON SCOTT.EMP TO USER9;
+
+<span class="comment-q">-- 11. Revoke SELECT privilege on EMP table from USER1.</span>
+REVOKE SELECT ON SCOTT.EMP FROM USER1;
+
+<span class="comment-q">-- 12. Revoke INSERT and UPDATE privileges on EMP table from USER2.</span>
+REVOKE INSERT, UPDATE ON SCOTT.EMP FROM USER2;
+
+<span class="comment-q">-- 13. Revoke ALL privileges on DEPT table from USER3.</span>
+REVOKE ALL ON SCOTT.DEPT FROM USER3;
+
+<span class="comment-q">-- 14. Revoke GRANT OPTION from USER4 on EMP table.</span>
+REVOKE GRANT OPTION FOR SELECT ON SCOTT.EMP FROM USER4;
+
+<span class="comment-q">-- 15. Revoke UPDATE privilege on SAL column from USER5.</span>
+REVOKE UPDATE (SAL) ON SCOTT.EMP FROM USER5;
+
+<span class="comment-q">-- 16. Revoke DELETE privilege on EMP table from USER6.</span>
+REVOKE DELETE ON SCOTT.EMP FROM USER6;
+
+<span class="comment-q">-- 17. Revoke privileges granted to PUBLIC on EMP table.</span>
+REVOKE SELECT ON SCOTT.EMP FROM PUBLIC;
+
+<span class="comment-q">-- 18. Revoke all privileges on EMP table from USER9.</span>
+REVOKE ALL ON SCOTT.EMP FROM USER9;
+
+<span class="comment-q">-- 19. Insert a new EMP record into EMP table and commit the changes.</span>
+INSERT INTO SCOTT.EMP (SCOTT.EMP, ENAME, JOB, MGR, HIREDATE, SAL, DEPTNO)
+VALUES (1001, 'SHANU', 'ANALYST', 7839, SYSDATE, 3500, 10);
+COMMIT;
+
+<span class="comment-q">-- 20. Update salary of EMP in department 10 and commit the changes.</span>
+UPDATE SCOTT.EMP SET SAL = SAL + 500 WHERE DEPTNO = 10; 
+COMMIT;
+
+<span class="comment-q">-- 21. Delete EMP with salary less than 1000 and commit the transaction.</span>
+DELETE FROM SCOTT.EMP WHERE SAL < 1000;
+COMMIT;
+
+<span class="comment-q">-- 22. Insert multiple records into DEPT table and commit them together.</span>
+INSERT INTO SCOTT.DEPT (DEPTNO, DNAME, LOC) VALUES (50, 'HR', 'DELHI');
+INSERT INTO SCOTT.DEPT (DEPTNO, DNAME, LOC) VALUES (60, 'IT', 'MUMBAI');
+COMMIT;
+
+<span class="comment-q">-- 23. Update department location and commit the changes.</span>
+UPDATE SCOTT.DEPT SET LOC = 'HYDERABAD' WHERE DEPTNO = 40;
+COMMIT;
+
+<span class="comment-q">-- 24. Insert a new EMP into EMP table but rollback the transaction.</span>
+INSERT INTO SCOTT.EMP (SCOTT.EMP, ENAME) VALUES (1002, 'TEST_USER');
+ROLLBACK;
+
+<span class="comment-q">-- 25. Update salary of EMP and then rollback the changes.</span>
+UPDATE SCOTT.EMP SET SAL = SAL * 1.5;
+ROLLBACK;
+
+<span class="comment-q">-- 26. Delete records from EMP table and rollback the transaction.</span>
+DELETE FROM SCOTT.EMP WHERE DEPTNO = 30;
+ROLLBACK;
+
+<span class="comment-q">-- 27. Perform multiple operations (INSERT, UPDATE, DELETE) and rollback all changes.</span>
+INSERT INTO SCOTT.EMP (SCOTT.EMP, ENAME) VALUES (1003, 'TSCOTT.EMP');
+UPDATE SCOTT.EMP SET SAL = 9000 WHERE SCOTT.EMP = 1003;
+DELETE FROM SCOTT.EMP WHERE SCOTT.EMP = 1003;
+ROLLBACK;
+
+<span class="comment-q">-- 28. Update department location and rollback before committing.</span>
+UPDATE SCOTT.DEPT SET LOC = 'BANGALORE' WHERE DEPTNO = 20;
+ROLLBACK;
+
+<span class="comment-q">-- 29. Insert a new EMP, update salary, and commit only after verifying results.</span>
+INSERT INTO SCOTT.EMP (SCOTT.EMP, ENAME, SAL) VALUES (1004, 'VERIFY_USER', 4000);
+UPDATE SCOTT.EMP SET SAL = 4500 WHERE SCOTT.EMP = 1004;
+COMMIT;
+
+<span class="comment-q">-- 30. Insert multiple EMP, rollback one operation using SAVEPOINT, then commit remaining.</span>
+INSERT INTO SCOTT.EMP (SCOTT.EMP, ENAME) VALUES (1005, 'SCOTT.EMP');
+SAVEPOINT sp_after_a;
+INSERT INTO SCOTT.EMP (SCOTT.EMP, ENAME) VALUES (1006, 'SCOTT.EMP');
+ROLLBACK TO sp_after_a;
+COMMIT;
+
+<span class="comment-q">-- 31. Create a transaction where some operations are committed and others are rolled back.</span>
+UPDATE SCOTT.EMP SET SAL = SAL + 100;
+SAVEPOINT sp_mid;
+DELETE FROM SCOTT.EMP WHERE DEPTNO = 40;
+ROLLBACK TO sp_mid;
+COMMIT;
+
+<span class="comment-q">-- 32. Demonstrate use of SAVEPOINT in EMP table operations.</span>
+INSERT INTO SCOTT.EMP (SCOTT.EMP, ENAME) VALUES (1007, 'SAVE_USER');
+SAVEPOINT point1;
+UPDATE SCOTT.EMP SET JOB = 'MANAGER' WHERE SCOTT.EMP = 1007;
+ROLLBACK TO point1;
+COMMIT;
+
+<span class="comment-q">-- 33. Perform update on EMP table and rollback to a specific SAVEPOINT.</span>
+UPDATE SCOTT.EMP SET COMM = 500;
+SAVEPOINT comm_mark;
+UPDATE SCOTT.EMP SET SAL = 0;
+ROLLBACK TO comm_mark;
+COMMIT;
+
+<span class="comment-q">-- 34. Grant privileges to a user, perform DML operations, and commit changes.</span>
+GRANT SELECT ON SCOTT.EMP TO USER10;
+INSERT INTO SCOTT.DEPT (DEPTNO, DNAME, LOC) VALUES (70, 'RESEARCH', 'CHENNAI');
+COMMIT;
+
+<span class="comment-q">-- 35. Revoke privileges and verify access restrictions using EMP table.</span>
+REVOKE INSERT ON SCOTT.EMP FROM USER2;
+-- Logic: After this, USER2 cannot perform INSERT on SCOTT.EMP.
+    </pre>
+</div>
+
+  <!-- <footer>
+        <p>queries by shanu | BCA 7086/24</p>
+    </footer> -->
+
+</body>
+
+</html>
